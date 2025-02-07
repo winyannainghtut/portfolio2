@@ -265,10 +265,10 @@ section {
     font-family: 'Doodle', cursive; /* changed font */
     display: block;
     margin-top: 0.3rem;
-    font-weight: 700; /* updated to bold font */
-    opacity: 0.7;
+    font-weight: 700; /* already bold */
     font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.6);
+    color: #ffffff; /* updated to a bolder, pure white color */
+    /* removed opacity to enhance boldness */
 }
 
 a {
@@ -359,5 +359,13 @@ a {
     }
     .hero h1 {
         font-size: 2rem;
+    }
+    .page-container {
+        scroll-snap-type: none; /* disable snap for smoother scrolling */
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch; /* enable momentum scrolling */
+    }
+    section {
+        scroll-snap-align: none; /* disable snap alignment */
     }
 }
