@@ -81,13 +81,11 @@ body {
 }
 
 .hero {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: none;
     padding: 2rem;
 }
 
@@ -103,6 +101,11 @@ body {
     font-weight: 400;
     font-size: 1.4rem;
     opacity: 0.9;
+}
+
+.role-text {
+    opacity: 0;
+    animation: fadeIn 2s ease-in forwards;
 }
 
 .profile-img {
@@ -134,13 +137,21 @@ body {
     transform: translateY(-3px);
 }
 
+.about-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
 .about-content {
-    margin-top: 2rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideUp 0.8s ease forwards;
+    animation-delay: 0.3s;
     max-width: 800px;
-    text-align: center;
-    background: none;
-    border: none;
-    padding: 2rem 0;
+    margin: 0 auto;
 }
 
 .about-content h2 {
@@ -223,6 +234,16 @@ body {
 a {
     text-decoration: none;
     color: inherit;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(-10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 
 @media (max-width: 768px) {
