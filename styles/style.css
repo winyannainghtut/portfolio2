@@ -1,171 +1,208 @@
-/* General Reset */
-* {
+/* styles/style.css */
+
+/* Resetting default styles for consistency */
+body, h1, h2, h3, p, ul, li, a, img {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-  }
-  
-  /* Body and Fonts */
-  body {
-    font-family: Arial, sans-serif;
-    color: #333;
-    background-color: #f5f5f5;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    list-style: none;
+    text-decoration: none;
+    color: inherit;
+}
+
+body {
+    font-family: 'Arial', sans-serif; /* Modern sans-serif font */
     line-height: 1.6;
-  }
-  
-  /* Navbar */
-  .navbar {
+    color: #333; /* Dark grey text for readability */
+    background-color: #f4f4f4; /* Light grey background */
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+.container {
+    max-width: 1200px; /* Maximum width for content */
+    margin: 0 auto; /* Center the container */
+    padding: 0 20px; /* Add some padding on the sides */
+}
+
+/* Header Styling */
+header {
+    background-color: #fff; /* White header background */
+    padding: 40px 0;
+    border-bottom: 1px solid #e0e0e0; /* Light border for separation */
+}
+
+.header-content {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #242526;
-    padding: 1rem 2rem;
-  }
-  .navbar .nav-logo a {
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.2rem;
-  }
-  .navbar .nav-menu {
-    list-style: none;
-    display: flex;
-    gap: 1rem;
-  }
-  .navbar .nav-menu li a {
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: 500;
-  }
-  .navbar .nav-menu li a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Hero Section */
-  .hero {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2rem;
-    background: #ffffff;
-    min-height: 60vh;
-  }
-  .hero-content {
-    max-width: 50%;
-  }
-  .hero-content h1 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-  .hero-content h1 span {
-    color: #007bff;
-  }
-  .hero-content .title {
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
-    color: #555;
-  }
-  .hero-content .btn-primary {
-    display: inline-block;
-    background: #007bff;
+    align-items: center; /* Vertically align items in header */
+}
+
+.profile-pic {
+    width: 150px; /* Adjust profile picture size */
+    height: 150px;
+    border-radius: 50%; /* Make it circular */
+    margin-right: 30px;
+    border: 5px solid #f4f4f4; /* White border around profile pic */
+}
+
+.header-text h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: #222; /* Darker heading color */
+}
+
+.header-text p {
+    color: #555; /* Medium grey for paragraph text */
+    margin-bottom: 20px;
+}
+
+.social-links {
+    display: flex; /* Arrange social links horizontally */
+    gap: 20px; /* Space between social links */
+}
+
+.social-links a {
+    color: #007bff; /* Blue color for social links */
+    transition: color 0.3s ease;
+    padding: 8px 12px; /* Padding around text links */
+    border-radius: 5px; /* Rounded corners for links */
+    border: 1px solid #007bff; /* Border to make them look like buttons */
+}
+
+.social-links a:hover {
+    color: #fff; /* White text on hover */
+    background-color: #007bff; /* Blue background on hover */
+    border-color: #0056b3; /* Darker border on hover */
+}
+
+
+/* Navigation Styling */
+nav {
+    background-color: #333; /* Dark background for navigation */
+    color: #fff; /* White text for navigation links */
+}
+
+nav .container ul {
+    display: flex; /* Make nav links horizontal */
+    justify-content: center; /* Center align nav links */
+    padding: 15px 0;
+}
+
+nav .container ul li {
+    margin: 0 20px;
+}
+
+nav .container ul li a {
     color: #fff;
-    padding: 0.75rem 1.25rem;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background 0.3s ease;
-  }
-  .hero-content .btn-primary:hover {
-    background: #0056b3;
-  }
-  .hero-image {
-    max-width: 40%;
-  }
-  .hero-image img {
-    width: 100%;
-    border-radius: 10px;
-    object-fit: cover;
-  }
-  
-  /* Social Section */
-  .social-section {
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+nav .container ul li a:hover {
+    color: #f4f4f4; /* Lighter color on hover */
+}
+
+/* Section Styling */
+section {
+    padding: 60px 0;
+}
+
+.section-home {
+    background-color: #fff;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.section-certifications {
+    background-color: #f9f9f9; /* Slightly different background for certifications */
+}
+
+section h2 {
+    font-size: 2em;
+    margin-bottom: 30px;
+    text-align: center; /* Center align section headings */
+    color: #222;
+}
+
+section p {
+    max-width: 800px;
+    margin: 0 auto;
     text-align: center;
-    background: #fafafa;
-    padding: 2rem;
-  }
-  .social-section h2 {
-    margin-bottom: 1rem;
-  }
-  .social-links {
-    display: inline-flex;
-    gap: 1rem;
-  }
-  .social-icon {
-    color: #007bff;
-    font-size: 1.5rem;
-    text-decoration: none;
-  }
-  .social-icon:hover {
-    color: #0056b3;
-  }
-  
-  /* About Section */
-  .about-section {
-    padding: 2rem;
-    background: #ffffff;
-  }
-  .about-section h2 {
-    margin-bottom: 1rem;
-  }
-  
-  /* Certifications */
-  .certifications-section {
-    padding: 2rem;
-    background: #fafafa;
-  }
-  .certifications-section h2 {
-    margin-bottom: 1rem;
-  }
-  .certifications-section ul {
-    list-style: none;
-    padding-left: 0;
-  }
-  .certifications-section li {
-    margin-bottom: 1rem;
-    line-height: 1.4;
-  }
-  .certifications-section a {
-    color: #007bff;
-    text-decoration: none;
-  }
-  .certifications-section a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Footer */
-  .footer {
-    background: #242526;
-    color: #ffffff;
+    color: #555;
+}
+
+/* Certification List Styling */
+.cert-list {
+    max-width: 800px;
+    margin: 20px auto 0;
+}
+
+.cert-list li {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 5px; /* Rounded corners for list items */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+    display: flex;
+    justify-content: space-between; /* Space between certification name and date */
+    align-items: center;
+}
+
+.cert-list li a {
+    color: #007bff; /* Blue color for certification link */
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.cert-list li a:hover {
+    color: #0056b3; /* Darker blue on hover */
+}
+
+.cert-date {
+    color: #777; /* Grey color for date */
+    font-size: 0.9em;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #222; /* Dark footer background */
+    color: #fff; /* White footer text */
     text-align: center;
-    padding: 1rem 2rem;
-  }
-  .footer p {
-    margin: 0;
-    font-size: 0.9rem;
-  }
-  
-  /* Responsive - Mobile Screens */
-  @media (max-width: 768px) {
-    .hero {
-      flex-direction: column;
-      text-align: center;
+    padding: 20px 0;
+    font-size: 0.9em;
+}
+
+/* Responsive adjustments - making it mobile-friendly */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 10px; /* Less side padding on smaller screens */
     }
-    .hero-content, .hero-image {
-      max-width: 100%;
+
+    .header-content {
+        flex-direction: column; /* Stack header content vertically on small screens */
+        text-align: center; /* Center align text in header */
     }
-    .navbar .nav-menu {
-      flex-direction: column;
-      gap: 0.5rem;
+
+    .profile-pic {
+        margin-right: 0;
+        margin-bottom: 20px; /* Space below profile pic when stacked */
     }
-  }
-  
+
+    nav .container ul {
+        flex-direction: column; /* Stack nav links vertically on small screens */
+        text-align: center;
+    }
+
+    nav .container ul li {
+        margin: 10px 0; /* More vertical space between nav links */
+    }
+
+    section {
+        padding: 40px 0; /* Less padding for sections on small screens */
+    }
+
+    section h2 {
+        font-size: 1.8em; /* Slightly smaller section headings on small screens */
+    }
+}
