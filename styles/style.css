@@ -187,6 +187,7 @@ section {
     align-items: center;
     justify-content: center;
     padding: 2rem;
+    padding-top: 80px; /* added to prevent overlap with fixed navbar */
 }
 
 .about-content {
