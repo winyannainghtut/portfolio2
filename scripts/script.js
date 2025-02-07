@@ -74,3 +74,34 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.certification-card').forEach((card) => {
     observer.observe(card);
 });
+
+/* filepath: /c:/Users/winya/OneDrive/Documents/github-blk/portfolio/scripts/script.js */
+/* ...existing code... */
+
+// Add smooth page scrolling control
+document.querySelector('.page-container').addEventListener('wheel', (e) => {
+    e.preventDefault();
+    const container = e.currentTarget;
+    const currentScroll = container.scrollTop;
+    const pageHeight = window.innerHeight;
+    
+    if (e.deltaY > 0) {
+        // Scrolling down
+        container.scrollTo({
+            top: Math.ceil(currentScroll / pageHeight) * pageHeight,
+            behavior: 'smooth'
+        });
+    } else {
+        // Scrolling up
+        container.scrollTo({
+            top: Math.floor(currentScroll / pageHeight - 0.5) * pageHeight,
+            behavior: 'smooth'
+        });
+    }
+}, { passive: false });
+
+// Ensure proper scroll position on page load
+window.addEventListener('load', () => {
+    const container = document.querySelector('.page-container');
+    container.scrollTo(0, 0);
+});

@@ -37,10 +37,34 @@ img {
     letter-spacing: 0.2px;
 }
 
+html {
+    scroll-behavior: smooth;
+    overflow-y: hidden; /* Prevent default scrolling */
+}
+
 body {
     background: #0a0a0a;
     color: #ffffff;
     line-height: 1.6;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.page-container {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+.hero,
+.about-section,
+#certifications {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    min-height: 100vh;
+    width: 100%;
 }
 
 .navbar {
