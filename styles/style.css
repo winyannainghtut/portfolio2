@@ -192,17 +192,12 @@ section {
 .about-content {
     opacity: 0;
     transform: translateY(20px);
-    animation: slideUp 0.8s ease forwards;
-    animation-delay: 0.3s;
     max-width: 800px;
     margin: 0 auto;
 }
 
-.about-content h2 {
-    font-family: 'Ubuntu', sans-serif;
-    font-weight: 600;
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
+.about-content.visible {
+    animation: fadeInOnce 1.5s ease-out forwards;
 }
 
 .about-content p {
@@ -211,7 +206,7 @@ section {
     font-size: 1.1rem;
     line-height: 1.8;
     opacity: 0.9;
-    animation: fadeInOut 8s ease-in-out infinite;
+    animation: none; /* Remove the infinite animation */
 }
 
 #certifications {
@@ -302,6 +297,39 @@ a {
     text-align: center;
 }
 
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    background: rgba(20, 20, 20, 0.95);
+    backdrop-filter: blur(10px);
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 1000;
+}
+
+.footer p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.footer a {
+    color: #23d5ab;
+    transition: opacity 0.3s ease;
+}
+
+.footer a:hover {
+    opacity: 0.8;
+}
+
+.heart {
+    color: #e73c7e;
+    display: inline-block;
+    animation: heartBeat 1.5s infinite;
+}
+
 @keyframes fadeIn {
     0% { opacity: 0; transform: translateY(-10px); }
     100% { opacity: 1; transform: translateY(0); }
@@ -335,6 +363,22 @@ a {
     55% { opacity: 0.9; }
     95% { opacity: 0.9; }
     100% { opacity: 0; }
+}
+
+@keyframes fadeInOnce {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes heartBeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
 }
 
 @media (max-width: 768px) {
