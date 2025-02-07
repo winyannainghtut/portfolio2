@@ -1,15 +1,37 @@
-/* Content Protection */
+/* Reset and Base Styles */
+:root {
+    --primary-bg: #0a0a0a;
+    --text-color: #ffffff;
+    --card-bg: rgba(30, 30, 30, 0.3);
+    --card-hover: rgba(40, 40, 40, 0.4);
+}
+
 * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none;
 }
 
+html {
+    scroll-behavior: smooth;
+    overflow: hidden;
+}
+
+body {
+    font-family: 'Ubuntu', sans-serif;
+    background: var(--primary-bg);
+    color: var(--text-color);
+    line-height: 1.6;
+    letter-spacing: 0.2px;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Content Protection */
 img {
     pointer-events: none;
-    -webkit-user-drag: none;
-    -moz-user-drag: none;
     user-drag: none;
 }
 
@@ -28,29 +50,7 @@ img {
     z-index: 2;
 }
 
-/* Existing Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Ubuntu', sans-serif;
-    letter-spacing: 0.2px;
-}
-
-html {
-    scroll-behavior: smooth;
-    overflow-y: hidden; /* Prevent default scrolling */
-}
-
-body {
-    background: #0a0a0a;
-    color: #ffffff;
-    line-height: 1.6;
-    height: 100vh;
-    overflow: hidden;
-    position: relative;
-}
-
+/* Layout */
 .page-container {
     height: 100vh;
     overflow-y: scroll;
@@ -58,15 +58,18 @@ body {
     scroll-behavior: smooth;
 }
 
-.hero,
-.about-section,
-#certifications {
+section {
     scroll-snap-align: start;
     scroll-snap-stop: always;
     min-height: 100vh;
     width: 100%;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+/* Navigation */
 .navbar {
     position: fixed;
     top: 0;
@@ -130,6 +133,7 @@ body {
 .role-text {
     opacity: 0;
     animation: fadeIn 2s ease-in forwards;
+    will-change: opacity, transform;
 }
 
 .profile-img {
@@ -205,17 +209,19 @@ body {
 }
 
 .certification-card {
-    background: rgba(30, 30, 30, 0.3);
+    background: var(--card-bg);
     padding: 1.5rem;
     border-radius: 12px;
     backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: transform 0.3s ease;
+    will-change: transform;
+    transform: translateZ(0);
 }
 
 .certification-card:hover {
     transform: translateY(-5px);
-    background: rgba(40, 40, 40, 0.4);
+    background: var(--card-hover);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
