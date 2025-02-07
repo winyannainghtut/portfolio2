@@ -1,36 +1,45 @@
-// scripts/script.js
+// Theme Toggle Logic
+const themeToggle = document.getElementById('theme-toggle');
+const body = document.body;
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Prevent text selection and right-click context menu on the entire body
-    document.body.addEventListener('selectstart', function(e) {
-        e.preventDefault(); // Prevent text selection from starting
-    });
+// Check for saved theme in localStorage
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+    body.setAttribute('data-theme', savedTheme);
+    updateIcon(savedTheme);
+}
 
-    document.body.addEventListener('contextmenu', function(e) {
-        e.preventDefault(); // Prevent right-click context menu
-        alert('Right-click and text selection are disabled on this website to protect content.'); // Optional: Inform the user (can be annoying)
-    });
+themeToggle.addEventListener('click', () => {
+    const currentTheme = body.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    body.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateIcon(newTheme);
+});
 
-    // Prevent right-click on images specifically to discourage direct download
-    const images = document.querySelectorAll('img');
-    images.forEach(img => {
-        img.addEventListener('contextmenu', function(e) {
-            e.preventDefault(); // Prevent right-click context menu on images
-            alert('Right-click to save images is disabled.'); // Optional: Inform user specifically for images
-        });
+function updateIcon(theme) {
+    const icon = theme === 'light' ? 'fa-sun' : 'fa-moon';
+    themeToggle.innerHTML = `<i class="fas ${icon}"></i>`;
+}
 
-        // Optional: Disable dragging of images (less common download method, but possible)
-        img.setAttribute('draggable', false); // Standard HTML attribute to disable dragging
-        // Or using JavaScript event listener for more control:
-        // img.addEventListener('dragstart', function(e) {
-        //     e.preventDefault();
-        // });
-    });
+// Content Protection
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+});
 
+document.addEventListener('dragstart', function(e) {
+    if (e.target.tagName === 'IMG') {
+        e.preventDefault();
+    }
+});
 
-    // Optional: CSS approach to disable text selection - can also be added to style.css for broader effect
-    // (This is less robust than preventDefault on selectstart but adds another layer)
-    // document.body.style.userSelect = 'none'; // Or '-webkit-user-select: none;', '-moz-user-select: none;', etc. for browser compatibility if needed directly in JS
-
-
+document.addEventListener('keydown', function(e) {
+    // Disable Ctrl+S, Ctrl+C, Ctrl+V
+    if (e.ctrlKey && (e.keyCode === 83 || e.keyCode === 67 || e.keyCode === 86)) {
+        e.preventDefault();
+    }
+    // Disable F12 (Developer Tools)
+    if (e.keyCode === 123) {
+        e.preventDefault();
+    }
 });

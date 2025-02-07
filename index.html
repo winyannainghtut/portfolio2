@@ -3,115 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Win Yan Naing Htut - Portfolio</title>
+    <title>KhawGyi</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="jpg/favicon.png">
+    <!-- Fonts and Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap">
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="styles/style.css">
-    <link rel="icon" href="jpg/favicon.png" type="image/png">
 </head>
 <body>
-    <header>
-        <div class="container header-content">
-            <img src="jpg/x.jpg" alt="Profile Picture" class="profile-pic">
-            <div class="header-text">
-                <h1>Win Yan Naing Htut</h1>
-                <p>A network engineer with enthusiasm for all technologies correlated to networking and in Cloud based technologies.</p>
-                <div class="social-links">
-                    <a href="https://www.facebook.com/winyannainghtut98/" target="_blank" aria-label="Facebook">
-                        Facebook
-                    </a>
-                    <a href="https://www.linkedin.com/in/wynh/" target="_blank" aria-label="LinkedIn">
-                        LinkedIn
-                    </a>
-                    <a href="mailto:winyannainghtut98@gmail.com" aria-label="Email">
-                        Email
-                    </a>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <nav>
-        <div class="container">
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#certifications">Certifications</a></li>
-                <li><a href="https://www.chatgpt.com" target="_blank">Got Questions?</a></li>
-            </ul>
-        </div>
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="https://www.chatgpt.com" target="_blank" rel="noopener noreferrer">Got Questions?</a></li>
+        </ul>
+        <button class="theme-toggle" id="theme-toggle">
+            <i class="fas fa-moon"></i>
+        </button>
     </nav>
 
-    <main>
-        <section id="home" class="container section-home">
-            <h2>About Me</h2>
-            <p>Welcome to my portfolio website! I am Win Yan Naing Htut, a network engineer passionate about the latest technologies in networking and cloud computing. This website showcases my skills, certifications, and professional journey. Feel free to explore and learn more about my expertise.</p>
-        </section>
-
-        <section id="certifications" class="container section-certifications">
-            <h2>Certifications</h2>
-            <ul class="cert-list">
-                <li>
-                    <a href="https://www.credly.com/badges/75574523-1bd7-4dfa-9cf4-f3680df2cd98/linked_in_profile" target="_blank">
-                        CKAD: Certified Kubernetes Application Developer
-                    </a>
-                    <span class="cert-date">Dec 2024 – Dec 2026</span>
-                </li>
-                <li>
-                    <a href="https://www.credly.com/badges/2f155a8d-f50e-4f05-859a-941168083eb0/linked_in_profile" target="_blank">
-                        HashiCorp Certified: Terraform Associate (003)
-                    </a>
-                    <span class="cert-date">Oct 2024 – Oct 2026</span>
-                </li>
-                <li>
-                    <a href="https://www.credly.com/badges/0e1cfe79-4b8a-46b7-8354-80a7476772d9/linked_in_profile" target="_blank">
-                        CKA: Certified Kubernetes Administrator
-                    </a>
-                    <span class="cert-date">Aug 2024 – Aug 2026</span>
-                </li>
-                <li>
-                    <a href="https://www.credly.com/badges/60a9411e-2b4d-4e2e-9289-493873092b3e/linked_in_profile" target="_blank">
-                        AWS Certified Solutions Architect – Associate
-                    </a>
-                    <span class="cert-date">Oct 2023 – Oct 2026</span>
-                </li>
-                <li>
-                    <a href="https://www.credly.com/badges/b43a52a9-8f21-4508-9a90-6e8c9f969de2/linked_in_profile" target="_blank">
-                        Cisco Certified Network Professional Enterprise (CCNP Enterprise)
-                    </a>
-                    <span class="cert-date">Dec 2022 – Dec 2025</span>
-                </li>
-                <li>
-                    <a href="https://www.credly.com/badges/656341b3-3ce0-4e4c-b290-5efa304ac352/linked_in_profile" target="_blank">
-                        Cisco Certified Specialist - Enterprise Advanced Infrastructure Implementation
-                    </a>
-                    <span class="cert-date">Dec 2022 – Dec 2025</span>
-                </li>
-                <li>
-                    <a href="https://www.credly.com/badges/510ebf94-f27d-4559-9d6f-1ae2a6b4276b?source=linked_in_profile" target="_blank">
-                        Cisco Certified Specialist - Enterprise Core
-                    </a>
-                    <span class="cert-date">Jun 2022 – Jun 2025</span>
-                </li>
-                <li>
-                    <a href="https://www.credential.net/16727451-0fc8-4405-9a8e-21cbd9ed14f3" target="_blank">
-                        ICSI CNSS Certified Network Security Specialist
-                    </a>
-                    <span class="cert-date">May-20</span>
-                </li>
-                <li>
-                    <a href="https://www.youracclaim.com/badges/85e38098-0e9e-4d98-9540-f39e58d078c0/linked_in_profile" target="_blank">
-                        Cisco Introduction to Cybersecurity
-                    </a>
-                    <span class="cert-date">May-20</span>
-                </li>
-            </ul>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Win Yan Naing Htut. All rights reserved.</p>
+    <section class="hero">
+        <div>
+            <!-- Profile Image with Protection -->
+            <div class="image-protection">
+                <img src="jpg/x.jpg" alt="Win Yan Naing Htut" class="profile-img">
+            </div>
+            <h1>Win Yan Naing Htut</h1>
+            <p>Network Engineer & Cloud Specialist</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/wynh/" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://www.facebook.com/winyannainghtut98/" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="mailto:winyannainghtut@gmail.com">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
         </div>
-    </footer>
+    </section>
 
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <p>
+                A cloud-network engineer with enthusiasm for all technologies correlated to networking and in Cloud based technologies. 
+                In addition to technological knowledge, I have developed good interpersonal and analytical skills alongside leadership 
+                skills through my professional experience.
+            </p>
+        </div>
+    </section>
+
+    <section id="certifications">
+        <h2 class="section-title">Certifications</h2>
+        <div class="certifications-grid">
+            <div class="certification-card">
+                <a href="https://www.credly.com/badges/75574523-1bd7-4dfa-9cf4-f3680df2cd98/linked_in_profile" target="_blank" rel="noopener noreferrer">
+                    <h3>CKAD: Certified Kubernetes Application Developer</h3>
+                    <p>The Linux Foundation</p>
+                    <span class="cert-date">Dec 2024 – Dec 2026</span>
+                </a>
+            </div>
+            <div class="certification-card">
+                <a href="https://www.credly.com/badges/2f155a8d-f50e-4f05-859a-941168083eb0/linked_in_profile" target="_blank" rel="noopener noreferrer">
+                    <h3>HashiCorp Certified: Terraform Associate (003)</h3>
+                    <p>HashiCorp</p>
+                    <span class="cert-date">Oct 2024 – Oct 2026</span>
+                </a>
+            </div>
+            <div class="certification-card">
+                <a href="https://www.credly.com/badges/0e1cfe79-4b8a-46b7-8354-80a7476772d9/linked_in_profile" target="_blank" rel="noopener noreferrer">
+                    <h3>CKA: Certified Kubernetes Administrator</h3>
+                    <p>The Linux Foundation</p>
+                    <span class="cert-date">Aug 2024 – Aug 2026</span>
+                </a>
+            </div>
+            <div class="certification-card">
+                <a href="https://www.credly.com/badges/60a9411e-2b4d-4e2e-9289-493873092b3e/linked_in_profile" target="_blank" rel="noopener noreferrer">
+                    <h3>AWS Certified Solutions Architect – Associate</h3>
+                    <p>Amazon Web Services (AWS)</p>
+                    <span class="cert-date">Oct 2023 – Oct 2026</span>
+                </a>
+            </div>
+            <div class="certification-card">
+                <a href="https://www.credly.com/badges/b43a52a9-8f21-4508-9a90-6e8c9f969de2/linked_in_profile" target="_blank" rel="noopener noreferrer">
+                    <h3>Cisco CCNP Enterprise</h3>
+                    <p>Cisco</p>
+                    <span class="cert-date">Dec 2022 – Dec 2025</span>
+                </a>
+            </div>
+            <div class="certification-card">
+                <a href="https://www.credly.com/badges/656341b3-3ce0-4e4c-b290-5efa304ac352/linked_in_profile" target="_blank" rel="noopener noreferrer">
+                    <h3>Cisco Certified Specialist - Enterprise Advanced Infrastructure Implementation</h3>
+                    <p>Cisco</p>
+                    <span class="cert-date">Dec 2022 – Dec 2025</span>
+                </a>
+            </div>
+            <div class="certification-card">
+                <a href="https://www.credly.com/badges/510ebf94-f27d-4559-9d6f-1ae2a6b4276b?source=linked_in_profile" target="_blank" rel="noopener noreferrer">
+                    <h3>Cisco Certified Specialist - Enterprise Core</h3>
+                    <p>Cisco</p>
+                    <span class="cert-date">Jun 2022 – Jun 2025</span>
+                </a>
+            </div>
+            <div class="certification-card">
+                <a href="https://www.credential.net/16727451-0fc8-4405-9a8e-21cbd9ed14f3" target="_blank" rel="noopener noreferrer">
+                    <h3>ICSI CNSS Certified Network Security Specialist</h3>
+                    <p>ICSI (International CyberSecurity Institute), UK</p>
+                    <span class="cert-date">May 2020</span>
+                </a>
+            </div>
+            <div class="certification-card">
+                <a href="https://www.youracclaim.com/badges/85e38098-0e9e-4d98-9540-f39e58d078c0/linked_in_profile" target="_blank" rel="noopener noreferrer">
+                    <h3>Cisco Introduction to Cybersecurity</h3>
+                    <p>Cisco</p>
+                    <span class="cert-date">May 2020</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript File -->
     <script src="scripts/script.js"></script>
 </body>
 </html>
