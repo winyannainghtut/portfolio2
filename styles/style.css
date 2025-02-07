@@ -60,6 +60,8 @@ body {
     padding: 1.5rem;
     backdrop-filter: blur(10px);
     z-index: 1000;
+    border-radius: 0 0 30px 30px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
 .nav-links {
@@ -75,6 +77,9 @@ body {
     text-decoration: none;
     font-weight: 600;
     transition: color 0.3s ease;
+    padding: 8px 20px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .nav-links a::after {
@@ -91,6 +96,8 @@ body {
 .nav-links a:hover {
     color: #34A853;
     transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(52, 168, 83, 0.2);
 }
 
 .nav-links a:hover::after {
@@ -125,7 +132,7 @@ body {
     height: 250px;
     border-radius: 50%;
     border: 4px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 0 20px rgba(52, 168, 83, 0.3);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
     display: block;
     margin: 0;
     transition: transform 0.3s ease;
@@ -146,11 +153,21 @@ body {
     color: #F5F5F5;
     font-size: 1.8rem;
     transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.1);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
 }
 
 .social-links a:hover {
     color: #23d5ab;
     transform: translateY(-5px) scale(1.1);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(35, 213, 171, 0.3);
 }
 
 .about-content {
@@ -158,6 +175,13 @@ body {
     max-width: 800px;
     text-align: left;
     margin-left: 0;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+    margin-top: 2rem;
 }
 
 .about-content h2 {
@@ -184,10 +208,11 @@ body {
 .certification-card {
     background: rgba(255, 255, 255, 0.1);
     padding: 1.5rem;
-    border-radius: 12px;
+    border-radius: 30px;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     transition: all 0.3s ease;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
 }
 
 .certification-card:hover {
@@ -199,7 +224,7 @@ body {
 .cert-badge {
     width: 100%;
     height: auto;
-    border-radius: 8px;
+    border-radius: 20px;
     margin-bottom: 1rem;
     transition: transform 0.3s ease;
 }
