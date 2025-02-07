@@ -11,7 +11,7 @@ body {
     line-height: 1.6;
 }
 
-.navbar {
+header {
     position: fixed;
     top: 0;
     width: 100%;
@@ -91,7 +91,7 @@ body {
     line-height: 1.8;
 }
 
-#certifications {
+.certifications {
     padding: 5rem 2rem;
 }
 
@@ -112,14 +112,8 @@ body {
 }
 
 .certification-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.certification-card a {
-    color: #F5F5F5;
-    text-decoration: none;
-    display: block;
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
 .cert-badge {
@@ -127,6 +121,12 @@ body {
     height: auto;
     border-radius: 8px;
     margin-bottom: 1rem;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.cert-badge.loaded {
+    opacity: 1;
 }
 
 .certification-card h3 {
@@ -145,6 +145,29 @@ body {
     font-size: 0.9rem;
     color: #34A853;
     font-weight: 500;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background: #2A2A2A;
+    color: #F5F5F5;
+}
+
+#back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #34A853;
+    color: #F5F5F5;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
+    z-index: 1000;
 }
 
 @media (max-width: 768px) {
