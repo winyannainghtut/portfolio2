@@ -15,7 +15,7 @@ Network Engineer specializing in cloud technologies and network infrastructure. 
 
 ## Contact
 
-📧 Email: [winyannainghtut@gmail.com](mailto:winyannainghtut@gmail.com)  
+📧 Email: [winyannainghtut@gmail.com](mailto:winyannainghtut98@gmail.com)  
 💼 LinkedIn: [linkedin.com/in/wynh](https://www.linkedin.com/in/wynh)  
 📘 Facebook: [facebook.com/winyannainghtut98](https://www.facebook.com/winyannainghtut98/)
 
@@ -26,6 +26,7 @@ Network Engineer specializing in cloud technologies and network infrastructure. 
 - Social Media Integration
 - Professional Portfolio Showcase
 - Interactive Contact Section
+- Content Protection (No text selection, image drag, or context menu)
 
 ## Technology Stack
 
@@ -33,6 +34,7 @@ Network Engineer specializing in cloud technologies and network infrastructure. 
 - Font Awesome Icons
 - Responsive Web Design
 - Progressive Enhancement
+- JavaScript for Smooth Scrolling and Content Protection
 
 ---
 
