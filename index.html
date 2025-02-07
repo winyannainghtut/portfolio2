@@ -3,20 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Win Yan Naing Htut - Portfolio</title>
+    <title>Win Yan Naing Htut - Network Engineer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Previous CSS remains the same, just adding profile image styling */
+        :root {
+            --primary: #2A2A2A;
+            --secondary: #0077B5;
+            --accent: #34A853;
+            --text: #F5F5F5;
+            --background: #1A1A1A;
+            --card-bg: rgba(255, 255, 255, 0.1);
+        }
+
+        [data-theme="light"] {
+            --primary: #F5F5F5;
+            --text: #2A2A2A;
+            --background: #FFFFFF;
+            --card-bg: rgba(42, 42, 42, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        body {
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(42, 42, 42, 0.95);
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        [data-theme="light"] .navbar {
+            background: rgba(245, 245, 245, 0.95);
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            background: none;
+            border: none;
+            color: var(--text);
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(45deg, var(--primary), var(--background));
+            padding: 2rem;
+        }
+
         .profile-img {
             width: 200px;
             height: 200px;
             border-radius: 50%;
-            margin: 2rem auto;
-            display: block;
-            object-fit: cover;
+            margin-bottom: 1.5rem;
+            border: 3px solid var(--accent);
+            box-shadow: 0 0 20px rgba(52, 168, 83, 0.3);
         }
 
-        /* Keep all previous CSS styles here */
-        /* ... */
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--text);
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+        }
+
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+        }
     </style>
 </head>
 <body>
@@ -24,26 +146,87 @@
         <ul class="nav-links">
             <li><a href="#about">About</a></li>
             <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</li>
+            <li><a href="https://www.chatgpt.com" target="_blank" rel="noopener noreferrer">Want to Know?</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
+        <button class="theme-toggle" id="theme-toggle">
+            <i class="fas fa-moon"></i> <!-- Default is dark mode (moon icon) -->
+        </button>
     </nav>
 
     <section class="hero">
         <div>
             <img src="jpg/x.jpg" alt="Win Yan Naing Htut" class="profile-img">
             <h1>Win Yan Naing Htut</h1>
-            <p>Network Engineer & Cloud Enthusiast</p>
+            <p>Network Engineer & Cloud Specialist</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/wynh/" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://www.facebook.com/winyannainghtut98/" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="mailto:winyannainghtut@gmail.com">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
         </div>
     </section>
 
     <section id="about">
         <h2 class="section-title">About Me</h2>
-        <p>A network engineer with enthusiasm for all technologies correlated to networking and in Cloud based technologies.</p>
-        <!-- You can add more bio content here if needed -->
+        <p>A network engineer with 7+ years of experience specializing in cloud technologies and network infrastructure. Currently based in Singapore, focused on implementing robust solutions and optimizing system performance through innovative approaches.</p>
     </section>
 
-    <!-- Rest of the sections remain the same -->
-    <!-- ... -->
+    <section id="skills">
+        <h2 class="section-title">Technical Expertise</h2>
+        <div class="skills-container">
+            <div class="skill-category">
+                <h3>Network Security</h3>
+                <ul>
+                    <li>FortiGate Firewalls</li>
+                    <li>FortiManager/FortiAnalyzer</li>
+                    <li>Cisco CCNP Enterprise</li>
+                    <li>Network Infrastructure Design</li>
+                </ul>
+            </div>
+            
+            <div class="skill-category">
+                <h3>Cloud Technologies</h3>
+                <ul>
+                    <li>AWS Solutions Architect</li>
+                    <li>Terraform Infrastructure</li>
+                    <li>Kubernetes (CKA/CKAD)</li>
+                    <li>NACLs & Security Groups</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Theme Toggle Logic
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        // Check for saved theme in localStorage
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            body.setAttribute('data-theme', savedTheme);
+            updateIcon(savedTheme);
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateIcon(newTheme);
+        });
+
+        function updateIcon(theme) {
+            const icon = theme === 'light' ? 'fa-sun' : 'fa-moon';
+            themeToggle.innerHTML = `<i class="fas ${icon}"></i>`;
+        }
+    </script>
 </body>
 </html>
