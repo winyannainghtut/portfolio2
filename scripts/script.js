@@ -1,8 +1,6 @@
-// Theme Toggle Logic
 const themeToggle = document.getElementById('theme-toggle');
 const body = document.body;
 
-// Check for saved theme in localStorage
 const savedTheme = localStorage.getItem('theme');
 if (savedTheme) {
     body.setAttribute('data-theme', savedTheme);
@@ -22,7 +20,6 @@ function updateIcon(theme) {
     themeToggle.innerHTML = `<i class="fas ${icon}"></i>`;
 }
 
-// Content Protection
 document.addEventListener('contextmenu', function(e) {
     e.preventDefault();
 });
@@ -34,11 +31,9 @@ document.addEventListener('dragstart', function(e) {
 });
 
 document.addEventListener('keydown', function(e) {
-    // Disable Ctrl+S, Ctrl+C, Ctrl+V
-    if (e.ctrlKey && (e.keyCode === 83 || e.keyCode === 67 || e.keyCode === 86)) {
+    if (e.ctrlKey && [83, 67, 86].includes(e.keyCode)) {
         e.preventDefault();
     }
-    // Disable F12 (Developer Tools)
     if (e.keyCode === 123) {
         e.preventDefault();
     }
