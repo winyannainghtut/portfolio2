@@ -126,3 +126,78 @@
     <script src="scripts/script.js"></script>
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Add this CSS -->
+    <style>
+        /* Disable text selection */
+        body {
+            -webkit-user-select: none; /* Safari */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* IE10+/Edge */
+            user-select: none; /* Standard */
+        }
+
+        /* Disable image dragging */
+        img {
+            pointer-events: none;
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            user-drag: none;
+        }
+
+        /* Add transparent overlay for images */
+        .image-protection {
+            position: relative;
+            display: inline-block;
+        }
+
+        .image-protection::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <!-- Add this JavaScript -->
+    <script>
+        // Disable right-click
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // Disable image dragging
+        document.addEventListener('dragstart', function(e) {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+            }
+        });
+
+        // Disable keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Disable Ctrl+S, Ctrl+C, Ctrl+V
+            if (e.ctrlKey && (e.keyCode === 83 || e.keyCode === 67 || e.keyCode === 86)) {
+                e.preventDefault();
+            }
+            // Disable F12 (Developer Tools)
+            if (e.keyCode === 123) {
+                e.preventDefault();
+            }
+        });
+    </script>
+
+    <!-- Update your profile image like this -->
+    <div class="image-protection">
+        <img src="jpg/x.jpg" alt="Win Yan Naing Htut" class="profile-img">
+    </div>
+</body>
+</html>
