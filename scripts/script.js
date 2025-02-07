@@ -1,6 +1,20 @@
+// Utility Functions
+const debounce = (func, wait) => {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+};
+
 // Content Protection
-document.addEventListener('contextmenu', function(e) {
-    e.preventDefault();
+const preventDefaultActions = (e) => e.preventDefault();
+['contextmenu', 'selectstart'].forEach(event => {
+    document.addEventListener(event, preventDefaultActions);
 });
 
 document.addEventListener('dragstart', function(e) {
@@ -20,11 +34,6 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-// Text Selection Blocked
-document.addEventListener('selectstart', function(e) {
-    e.preventDefault();
-});
-
 // Image Overlay Protection
 document.querySelectorAll('img').forEach(img => {
     const overlay = document.createElement('div');
@@ -39,13 +48,18 @@ document.querySelectorAll('img').forEach(img => {
     img.parentElement.insertBefore(overlay, img);
 });
 
-// Smooth Scroll
+// Smooth Scroll with Error Handling
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+        try {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        } catch (error) {
+            console.error('Scroll error:', error);
+        }
     });
 });
 
@@ -62,46 +76,51 @@ document.addEventListener('mousemove', (e) => {
     });
 });
 
-// Add scroll reveal animation
+// Optimized Intersection Observer
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.classList.add('fade-in');
+            requestAnimationFrame(() => {
+                entry.target.classList.add('fade-in');
+            });
         }
     });
-}, { threshold: 0.1 });
+}, { 
+    threshold: 0.1,
+    rootMargin: '20px'
+});
 
-document.querySelectorAll('.certification-card').forEach((card) => {
+document.querySelectorAll('.certification-card').forEach(card => {
     observer.observe(card);
 });
 
-/* filepath: /c:/Users/winya/OneDrive/Documents/github-blk/portfolio/scripts/script.js */
-/* ...existing code... */
+// Optimized Page Scroll
+const pageContainer = document.querySelector('.page-container');
+if (pageContainer) {
+    const handleScroll = debounce((e) => {
+        e.preventDefault();
+        const { currentTarget, deltaY } = e;
+        const currentScroll = currentTarget.scrollTop;
+        const pageHeight = window.innerHeight;
 
-// Add smooth page scrolling control
-document.querySelector('.page-container').addEventListener('wheel', (e) => {
-    e.preventDefault();
-    const container = e.currentTarget;
-    const currentScroll = container.scrollTop;
-    const pageHeight = window.innerHeight;
-    
-    if (e.deltaY > 0) {
-        // Scrolling down
-        container.scrollTo({
-            top: Math.ceil(currentScroll / pageHeight) * pageHeight,
-            behavior: 'smooth'
+        requestAnimationFrame(() => {
+            currentTarget.scrollTo({
+                top: Math[deltaY > 0 ? 'ceil' : 'floor'](currentScroll / pageHeight) * pageHeight,
+                behavior: 'smooth'
+            });
         });
-    } else {
-        // Scrolling up
-        container.scrollTo({
-            top: Math.floor(currentScroll / pageHeight - 0.5) * pageHeight,
-            behavior: 'smooth'
-        });
-    }
-}, { passive: false });
+    }, 50);
+
+    pageContainer.addEventListener('wheel', handleScroll, { passive: false });
+}
 
 // Ensure proper scroll position on page load
 window.addEventListener('load', () => {
     const container = document.querySelector('.page-container');
     container.scrollTo(0, 0);
+});
+
+// Cleanup on page unload
+window.addEventListener('unload', () => {
+    observer.disconnect();
 });
