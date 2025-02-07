@@ -171,3 +171,37 @@
       font-size: 2rem;
     }
   }
+  
+/* Certifications List */
+.certifications-list ul {
+    list-style: none;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.certifications-list li {
+    margin: 1rem 0;
+    padding: 1rem;
+    background: var(--card-bg);
+    border-radius: 8px;
+    transition: transform 0.2s ease;
+}
+
+.certifications-list li:hover {
+    transform: translateX(10px);
+}
+
+.certifications-list a {
+    color: var(--text);
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cert-date {
+    color: var(--accent);
+    font-size: 0.9rem;
+    margin-left: 1rem;
+    white-space: nowrap;
+}
