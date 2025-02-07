@@ -245,3 +245,19 @@
     line-height: 1.8;
     color: var(--text);
 }
+
+/* Disables text selection site-wide */
+body {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Disables image dragging */
+img {
+    pointer-events: none;
+    -webkit-user-drag: none;
+    -moz-user-drag: none;
+    user-drag: none;
+}
