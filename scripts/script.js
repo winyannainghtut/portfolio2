@@ -5,13 +5,6 @@ document.addEventListener('contextmenu', function(e) {
     e.preventDefault();
 });
 
-// Disable image dragging
-document.addEventListener('dragstart', function(e) {
-    if (e.target.tagName === 'IMG') {
-        e.preventDefault();
-    }
-});
-
 // Disable certain keyboard shortcuts
 document.addEventListener('keydown', function(e) {
     // Disable Ctrl+S, Ctrl+C, Ctrl+V
@@ -53,3 +46,9 @@ const yearElement = document.getElementById('year');
 if (yearElement) {
     yearElement.textContent = new Date().getFullYear();
 }
+
+document.addEventListener('dragstart', function(e) {
+    if (e.target.tagName === 'IMG') {
+        e.preventDefault();
+    }
+});

@@ -1,5 +1,7 @@
-/* Base Styles */
-:root {
+/* ===============================
+   BASE THEME & COLOR VARIABLES
+   =============================== */
+   :root {
     --primary: #2A2A2A;
     --secondary: #0077B5;
     --accent: #34A853;
@@ -15,7 +17,9 @@
     --card-bg: rgba(42, 42, 42, 0.1);
 }
 
-/* Base Reset & Font */
+/* ===============================
+   RESET & BASE SETTINGS
+   =============================== */
 * {
     margin: 0;
     padding: 0;
@@ -24,7 +28,9 @@
     transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* Body */
+/* ===============================
+   BODY
+   =============================== */
 body {
     background: var(--background);
     color: var(--text);
@@ -35,14 +41,6 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-}
-
-/* Disable image dragging */
-img {
-    pointer-events: none;
-    -webkit-user-drag: none;
-    -moz-user-drag: none;
-    user-drag: none;
 }
 
 /* Navbar */
@@ -88,7 +86,9 @@ img {
     font-size: 1.5rem;
 }
 
-/* Hero Section */
+/* ===============================
+   HERO SECTION
+   =============================== */
 .hero {
     height: 100vh;
     display: flex;
@@ -100,23 +100,37 @@ img {
     margin-top: 70px; /* Offset for fixed navbar */
 }
 
-/* Profile Image Container */
-.image-protection {
+/* Profile Image Wrapper + Overlay */
+.image-wrapper {
     position: relative;
-    display: block;
-    margin: 0 auto;
-    width: fit-content;
+    display: inline-block; /* or block if you want full width */
+    margin-bottom: 1.5rem;
 }
 
-/* Profile Image */
+/* The actual overlay that sits on top of the image */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: not-allowed;
+    z-index: 2;
+}
+
+/* Image styling + disabled pointer events */
 .profile-img {
     width: 200px;
     height: 200px;
     border-radius: 50%;
     border: 3px solid var(--accent);
     box-shadow: 0 0 20px rgba(52, 168, 83, 0.3);
-    display: block;
-    margin: 0 auto;
+
+    /* Disables image dragging */
+    pointer-events: none;
+    -webkit-user-drag: none;
+    -moz-user-drag: none;
+    user-drag: none;
 }
 
 /* Social Links */
@@ -137,7 +151,9 @@ img {
     transform: translateY(-3px);
 }
 
-/* About Section */
+/* ===============================
+   ABOUT SECTION
+   =============================== */
 #about {
     max-width: 800px;
     margin: 0 auto;
@@ -152,13 +168,9 @@ img {
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.about-content p {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: var(--text);
-}
-
-/* Certifications Section */
+/* ===============================
+   CERTIFICATIONS SECTION
+   =============================== */
 #certifications {
     padding: 5rem 2rem;
     background: rgba(255, 255, 255, 0.05);
@@ -212,20 +224,26 @@ img {
     font-weight: 500;
 }
 
-/* Section Title */
+/* ===============================
+   HEADINGS
+   =============================== */
 .section-title {
     font-size: 2rem;
     text-align: center;
     margin-bottom: 1.5rem;
 }
 
-/* Footer */
+/* ===============================
+   FOOTER
+   =============================== */
 footer {
     background: rgba(42, 42, 42, 0.95);
     backdrop-filter: blur(5px);
 }
 
-/* Responsive Design */
+/* ===============================
+   RESPONSIVE DESIGN
+   =============================== */
 @media (max-width: 768px) {
     .nav-links {
         gap: 1rem;
