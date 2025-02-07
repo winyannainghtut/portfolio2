@@ -190,23 +190,10 @@ section {
 }
 
 .about-content {
-    opacity: 0;
-    transform: translateY(20px);
     max-width: 800px;
     margin: 0 auto;
-}
-
-.about-content.visible {
-    animation: fadeInOnce 1.5s ease-out forwards;
-}
-
-.about-content p {
-    font-family: 'Ubuntu', sans-serif;
-    font-weight: 400;
-    font-size: 1.1rem;
-    line-height: 1.8;
-    opacity: 0.9;
-    animation: none; /* Remove the infinite animation */
+    opacity: 1;
+    transform: none;
 }
 
 #certifications {
@@ -302,32 +289,14 @@ a {
     bottom: 0;
     left: 0;
     width: 100%;
-    padding: 1rem;
+    padding: 0.8rem;
     background: rgba(20, 20, 20, 0.95);
     backdrop-filter: blur(10px);
     text-align: center;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     z-index: 1000;
-}
-
-.footer p {
     font-size: 0.9rem;
     opacity: 0.8;
-}
-
-.footer a {
-    color: #23d5ab;
-    transition: opacity 0.3s ease;
-}
-
-.footer a:hover {
-    opacity: 0.8;
-}
-
-.heart {
-    color: #e73c7e;
-    display: inline-block;
-    animation: heartBeat 1.5s infinite;
 }
 
 @keyframes fadeIn {
