@@ -6,7 +6,8 @@ body {
     line-height: 1.6;
     letter-spacing: 0.2px;
     height: 100vh;
-    overflow: hidden;
+    overflow-y: auto;  /* Changed from hidden */
+    overflow-x: hidden;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -20,7 +21,7 @@ body {
 
 html {
     scroll-behavior: smooth;
-    overflow: hidden;
+    overflow-y: auto;  /* Changed from hidden */
 }
 
 /* Content Protection */
@@ -46,9 +47,10 @@ img {
 
 /* Layout */
 .page-container {
-    height: auto;
-    overflow: auto;
-    scroll-snap-type: none;
+    height: 100vh;
+    overflow-y: auto;
+    padding-top: 60px; /* Added to account for fixed navbar */
+    scroll-behavior: smooth;
 }
 
 section {
@@ -56,7 +58,7 @@ section {
     scroll-snap-stop: always;
     min-height: 100vh;
     width: 100%;
-    padding: 2rem;
+    padding: 4rem 2rem; /* Increased padding */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -73,12 +75,16 @@ section {
     z-index: 1000;
     border-bottom: 1px solid var(--border-color);
     transition: all 0.3s ease;
+    height: 60px; /* Fixed height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .nav-links {
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    gap: 3rem; /* Increased gap */
     list-style: none;
 }
 
@@ -102,12 +108,13 @@ section {
 }
 
 .hero {
-    min-height: 100vh;
+    min-height: calc(100vh - 60px); /* Account for navbar */
     display: flex;
     align-items: center;
     justify-content: start;
     text-align: center;
     padding: 2rem;
+    padding-top: 6rem; /* Increased top padding */
     margin-top: 5rem;
 }
 
@@ -294,10 +301,11 @@ section {
 .certifications-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
+    gap: 2rem; /* Increased gap */
     width: 100%;
     max-width: 1200px;
     margin: 2rem auto 0;
+    padding: 1rem;
 }
 
 .certification-card {
@@ -497,7 +505,7 @@ a {
 
 @media (max-width: 768px) {
     .nav-links {
-        gap: 1rem;
+        gap: 1.5rem;
         font-size: 0.9rem;
     }
     .hero h1 {
@@ -510,16 +518,18 @@ a {
     }
     section {
         scroll-snap-align: none; /* disable snap alignment */
+        padding: 2rem 1rem;
     }
     /* Added mobile adjustments for certification page */
     .certifications-grid {
-        grid-template-columns: repeat(2, 1fr); /* Keep 2 columns on mobile */
+        grid-template-columns: 1fr; /* Single column on mobile */
         gap: 1rem;
         padding: 0.5rem;
     }
     
     .certification-card {
         padding: 1rem;
+        margin-bottom: 1rem;
     }
     
     .cert-badge {
@@ -537,6 +547,14 @@ a {
     
     .about-description {
         font-size: 1rem;
+    }
+
+    .about-container {
+        padding: 1rem;
+    }
+
+    .hero {
+        padding-top: 4rem;
     }
 }
 

@@ -12,6 +12,7 @@
     --button-bg: rgba(255, 255, 255, 0.1);
     --button-border: rgba(255, 255, 255, 0.2);
     --button-hover: rgba(255, 255, 255, 0.2);
+    transition: var(--theme-transition);
 }
 
 .theme-light {
@@ -27,9 +28,19 @@
     --button-bg: #e9ecef;
     --button-border: #dee2e6;
     --button-hover: #ced4da;
+    transition: var(--theme-transition);
 }
 
 /* Apply theme to root */
 :root {
     color-scheme: dark light;
+    --theme-transition: none;
+}
+
+/* Add transition to all color properties */
+*, *::before, *::after {
+    transition: background-color 0.3s ease,
+                color 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
 }

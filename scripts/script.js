@@ -8,9 +8,15 @@ const currentTheme = localStorage.getItem('theme') ||
 
 // Initialize theme
 function setTheme(theme) {
+    document.documentElement.style.setProperty('--theme-transition', 'all 0.3s ease');
     document.body.classList.remove('theme-light', 'theme-dark');
     document.body.classList.add(`theme-${theme}`);
     updateThemeIcon(theme);
+    
+    // Remove transition after theme change
+    setTimeout(() => {
+        document.documentElement.style.removeProperty('--theme-transition');
+    }, 300);
 }
 
 // Set initial theme
@@ -46,16 +52,16 @@ const debounce = (func, wait) => {
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
-        try {
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({ 
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        } catch (error) {
-            console.error('Scroll error:', error);
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            const headerOffset = 60;
+            const elementPosition = target.getBoundingClientRect().top;
+            const offsetPosition = elementPosition - headerOffset;
+
+            window.scrollBy({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
         }
     });
 });
@@ -83,20 +89,8 @@ document.querySelectorAll('.certification-card').forEach(card => {
 // Optimized Scroll Handler
 const pageContainer = document.querySelector('.page-container');
 if (pageContainer) {
-    const handleScroll = debounce((e) => {
-        requestAnimationFrame(() => {
-            const { currentTarget, deltaY } = e;
-            const currentScroll = currentTarget.scrollTop;
-            const pageHeight = window.innerHeight;
-            
-            currentTarget.scrollTo({
-                top: Math[deltaY > 0 ? 'ceil' : 'floor'](currentScroll / pageHeight) * pageHeight,
-                behavior: 'smooth'
-            });
-        });
-    }, 50);
-
-    pageContainer.addEventListener('wheel', handleScroll, { passive: false });
+    // Remove the complex scroll handling to allow native smooth scroll
+    pageContainer.removeEventListener('wheel', handleScroll);
 }
 
 // Content Protection
