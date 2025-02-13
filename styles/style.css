@@ -1,9 +1,10 @@
 /* Reset and Base Styles */
 :root {
-    --primary-bg: #0a0a0a;
-    --text-color: #ffffff;
-    --card-bg: rgba(30, 30, 30, 0.3);
-    --card-hover: rgba(40, 40, 40, 0.4);
+    --primary-bg: #1a1a1a;
+    --text-color: #e0e0e0;
+    --card-bg: #282828;
+    --accent-color: #4a9eff;
+    --border-color: #404040;
 }
 
 * {
@@ -20,11 +21,11 @@ html {
 }
 
 body {
-    font-family: sans-serif; /* changed from 'Doodle', cursive */
+    font-family: 'Courier New', monospace;
     background: var(--primary-bg);
     color: var(--text-color);
     line-height: 1.6;
-    letter-spacing: 0.2px;
+    letter-spacing: 0.5px;
     height: 100vh;
     overflow: hidden;
 }
@@ -74,11 +75,10 @@ section {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(20, 20, 20, 0.95);
-    padding: 1.5rem;
-    backdrop-filter: blur(10px);
+    background: var(--primary-bg);
+    padding: 1rem;
     z-index: 1000;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 2px solid var(--border-color);
 }
 
 .nav-links {
@@ -89,22 +89,35 @@ section {
 }
 
 .nav-links a {
-    color: #ffffff;
+    color: var(--text-color);
     text-decoration: none;
-    font-weight: 500;
-    font-size: 1.1rem;
+    font-weight: normal;
+    font-size: 1rem;
+    position: relative;
+    padding: 0.2rem 0;
     opacity: 0.8;
     transition: opacity 0.3s ease;
 }
 
 .nav-links a:hover {
-    color: #ffffff;
-    opacity: 1;
-    transform: translateY(-2px);
+    color: var(--accent-color);
+    transform: none;
 }
 
 .nav-links a::after {
-    display: none; /* Remove any existing underline effects */
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent-color);
+    transform: scaleX(0);
+    transition: transform 0.2s ease;
+}
+
+.nav-links a:hover::after {
+    transform: scaleX(1);
 }
 
 .hero {
@@ -216,11 +229,11 @@ section {
 }
 
 .certification-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
     padding: 1.5rem;
-    border-radius: 16px;
-    transition: all 0.3s ease;
+    border-radius: 0;
+    transition: border-color 0.3s ease;
     position: relative;
     overflow: hidden;
     display: flex;
@@ -229,37 +242,22 @@ section {
 }
 
 .certification-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        45deg,
-        transparent 0%,
-        rgba(255, 255, 255, 0.05) 50%,
-        transparent 100%
-    );
-    transform: translateX(-100%);
-    transition: transform 0.6s ease;
+    display: none;
 }
 
 .certification-card:hover {
-    transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.05);
-    box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.3);
-}
-
-.certification-card:hover::before {
-    transform: translateX(100%);
+    transform: none;
+    border-color: var(--accent-color);
+    background: var(--card-bg);
+    box-shadow: none;
 }
 
 .cert-badge {
     width: 70px;
     height: 70px;
     margin-bottom: 1rem;
-    border-radius: 12px;
+    border: 2px solid var(--border-color);
+    border-radius: 0;
     object-fit: contain;
     background: rgba(255, 255, 255, 0.03);
     padding: 0.5rem;
@@ -308,15 +306,16 @@ a {
     left: 0;
     width: 100%;
     padding: 0.8rem;
-    background: rgba(20, 20, 20, 0.95);
+    background: var(--primary-bg);
+    border-top: 2px solid var(--border-color);
     backdrop-filter: blur(10px);
     text-align: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
     z-index: 1000;
     font-size: 0.9rem;
     opacity: 0.8;
 }
 
+/* Update animations */
 @keyframes fadeIn {
     0% { opacity: 0; transform: translateY(-10px); }
     100% { opacity: 1; transform: translateY(0); }
@@ -330,44 +329,30 @@ a {
 @keyframes slideRole {
     0%, 3% {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateX(-20px);
     }
     5%, 45% {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateX(0);
     }
     47%, 100% {
         opacity: 0;
-        transform: translateY(-20px);
+        transform: translateX(20px);
     }
 }
 
+/* Remove unnecessary animations */
 @keyframes fadeInOut {
-    0% { opacity: 0; }
-    5% { opacity: 0.9; }
-    45% { opacity: 0.9; }
-    50% { opacity: 0; }
-    55% { opacity: 0.9; }
-    95% { opacity: 0.9; }
-    100% { opacity: 0; }
+    0%, 100% { opacity: 0; }
+    5%, 95% { opacity: 1; }
 }
 
 @keyframes fadeInOnce {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
 
-@keyframes heartBeat {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-}
-
+/* Remove heartBeat animation */
 @media (max-width: 768px) {
     .nav-links {
         gap: 1rem;
@@ -392,6 +377,7 @@ a {
     }
     
     .certification-card {
+        border-width: 1px;
         padding: 1rem;
     }
     
