@@ -1,0 +1,103 @@
+.cv-content {
+    max-width: 800px;
+    margin: 8rem auto 4rem;
+    padding: 0 2rem;
+}
+
+.cv-content header {
+    margin-bottom: 4rem;
+}
+
+.cv-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    color: var(--secondary-text);
+}
+
+.cv-section {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.cv-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+}
+
+.experience-item {
+    margin-bottom: 2rem;
+}
+
+.experience-item h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.company {
+    color: var(--secondary-text);
+    font-size: 1.1rem;
+}
+
+.period {
+    color: var(--secondary-text);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.skill-group h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.skill-group ul {
+    list-style: none;
+    padding: 0;
+}
+
+.skill-group li {
+    margin-bottom: 0.5rem;
+    color: var(--secondary-text);
+}
+
+.contact-list {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-list li {
+    margin-bottom: 1rem;
+}
+
+.contact-list a {
+    color: var(--text-color);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border-color);
+    transition: border-color 0.3s ease;
+}
+
+.contact-list a:hover {
+    border-color: var(--text-color);
+}
+
+@media (max-width: 768px) {
+    .cv-content {
+        margin-top: 6rem;
+    }
+    
+    .cv-content h1 {
+        font-size: 2.5rem;
+    }
+}
