@@ -206,9 +206,8 @@ section {
 }
 
 .certifications-grid {
-    /* Changed grid layout and merged margin definitions */
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr); /* updated for 2x2 layout */
     gap: 1rem;
     padding: 0.5rem;
     max-width: 1400px;
@@ -217,14 +216,16 @@ section {
 
 .certification-card {
     background: var(--card-bg);
-    padding: 0.5rem;
+    padding: 0.4rem; /* Reduced padding */
     border-radius: 12px;
     backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: transform 0.3s ease;
     will-change: transform;
     transform: translateZ(0);
-    font-size: 0.8em;
+    font-size: 0.75em; /* Reduced font size */
+    max-width: 400px; /* Add max-width to limit card size */
+    margin: 0 auto;
 }
 
 .certification-card:hover {
@@ -235,9 +236,9 @@ section {
 
 .cert-badge {
     width: 100%;
-    max-width: 180px;
+    max-width: 120px; /* Reduced from 180px */
     height: auto;
-    margin: 0 auto 0.8rem;
+    margin: 0 auto 0.5rem; /* Reduced bottom margin */
     display: block;
     border-radius: 8px;
 }
@@ -245,7 +246,7 @@ section {
 .certification-card h3 {
     font-family: sans-serif; /* changed from 'Doodle', cursive */
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 0.9rem; /* Reduced title size */
     line-height: 1.3;
 }
 
@@ -264,9 +265,9 @@ section {
 .cert-date {
     font-family: sans-serif; /* changed from 'Doodle', cursive */
     display: block;
-    margin-top: 0.3rem;
+    margin-top: 0.2rem; /* Adjusted margin */
     font-weight: 700; /* already bold */
-    font-size: 0.8rem;
+    font-size: 0.7rem; /* Adjusted date text */
     color: #ffffff; /* updated to a bolder, pure white color */
     /* removed opacity to enhance boldness */
 }
@@ -370,7 +371,7 @@ a {
     }
     /* Added mobile adjustments for certification page */
     .certifications-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* revert to single column on mobile */
         padding: 0.5rem;
     }
 }
