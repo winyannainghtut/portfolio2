@@ -1,13 +1,11 @@
 // Utility Functions
 const debounce = (func, wait) => {
     let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
+    return (...args) => {
         clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
+        timeout = setTimeout(() => {
+            func(...args);
+        }, wait);
     };
 };
 
@@ -17,21 +15,15 @@ const preventDefaultActions = (e) => e.preventDefault();
     document.addEventListener(event, preventDefaultActions);
 });
 
-document.addEventListener('dragstart', function(e) {
-    if (e.target.tagName === 'IMG') {
-        e.preventDefault();
-    }
+document.addEventListener('dragstart', (e) => {
+    if (e.target.tagName === 'IMG') e.preventDefault();
 });
 
-document.addEventListener('keydown', function(e) {
-    // Block Ctrl+S/C/V
+document.addEventListener('keydown', (e) => {
     if (e.ctrlKey && (e.keyCode === 83 || e.keyCode === 67 || e.keyCode === 86)) {
         e.preventDefault();
     }
-    // Block F12
-    if (e.keyCode === 123) {
-        e.preventDefault();
-    }
+    if (e.keyCode === 123) e.preventDefault();
 });
 
 // Image Overlay Protection

@@ -206,13 +206,13 @@ section {
 }
 
 .certifications-grid {
+    /* Changed grid layout and merged margin definitions */
     display: grid;
     grid-template-columns: 1fr;
     gap: 1rem;
     padding: 0.5rem;
-    margin-top: 1rem;
     max-width: 1400px;
-    margin: 0 auto;
+    margin: 1rem auto 0;
 }
 
 .certification-card {
