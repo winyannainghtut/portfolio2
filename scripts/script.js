@@ -11,7 +11,7 @@ function setTheme(theme) {
 // Initialize theme
 const savedTheme = localStorage.getItem('theme');
 const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-const defaultTheme = prefersDark.matches ? 'dark' : 'light';
+const defaultTheme = 'dark'; // Changed this line to always default to dark
 setTheme(savedTheme || defaultTheme);
 
 // Theme toggle
