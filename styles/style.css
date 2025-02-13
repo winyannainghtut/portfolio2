@@ -46,10 +46,9 @@ img {
 
 /* Layout */
 .page-container {
-    height: 100vh;
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
-    scroll-snap-behavior: smooth;
+    height: auto;
+    overflow: auto;
+    scroll-snap-type: none;
 }
 
 section {
@@ -106,16 +105,17 @@ section {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     text-align: center;
     padding: 2rem;
+    margin-top: 5rem;
 }
 
 .hero h1 {
     font-family: sans-serif; /* changed from 'Doodle', cursive */
     font-weight: 700;
-    font-size: 2.8rem;
-    margin-bottom: 0.5rem;
+    font-size: 3rem; /* bigger heading */
+    margin-bottom: 1rem;
 }
 
 .hero p {
@@ -181,10 +181,12 @@ section {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 4rem 2rem;
+    justify-content: start;
+    padding: 2rem 0;
+    margin-bottom: 4rem;
     background: var(--section-gradient);
     transition: all 0.3s ease;
+    border-bottom: 1px solid var(--border-color); /* subtle dividing line */
 }
 
 .about-container {
@@ -386,7 +388,8 @@ a {
     padding: 1rem 0;
     margin-bottom: 1rem;
     z-index: 10;
-    text-align: center;
+    text-align: left;
+    font-size: 2rem;
 }
 
 .footer {
@@ -571,4 +574,11 @@ a {
 
 .theme-light .cert-date {
     color: var(--secondary-text);
+}
+
+/* Minimal container */
+.minimal-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
 }

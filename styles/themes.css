@@ -1,7 +1,6 @@
-
 /* Theme definitions */
 .theme-dark {
-    --primary-bg: #0a0a0a;
+    --primary-bg: #1c1c1c;
     --text-color: #ffffff;
     --secondary-text: rgba(255, 255, 255, 0.8);
     --card-bg: rgba(30, 30, 30, 0.3);
@@ -16,8 +15,8 @@
 }
 
 .theme-light {
-    --primary-bg: #f8f9fa;
-    --text-color: #212529;
+    --primary-bg: #fafafa;
+    --text-color: #222222;
     --secondary-text: #495057;
     --card-bg: #ffffff;
     --card-hover: #f8f9fa;
