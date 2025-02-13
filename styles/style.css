@@ -208,53 +208,55 @@ section {
 .certifications-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* updated for 2x2 layout */
-    gap: 1rem;
-    padding: 0.5rem;
-    max-width: 1400px;
+    gap: 0.8rem;
+    padding: 0.3rem;
+    max-width: 900px; /* Reduced max-width for better containment */
     margin: 1rem auto 0;
 }
 
 .certification-card {
     background: var(--card-bg);
-    padding: 0.4rem; /* Reduced padding */
-    border-radius: 12px;
+    padding: 0.4rem 0.6rem;
+    border-radius: 8px; /* Smaller border radius */
     backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: transform 0.3s ease;
-    will-change: transform;
-    transform: translateZ(0);
-    font-size: 0.75em; /* Reduced font size */
-    max-width: 400px; /* Add max-width to limit card size */
+    transition: all 0.2s ease;
+    max-width: 350px; /* Smaller max-width */
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .certification-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-3px);
     background: var(--card-hover);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
 }
 
 .cert-badge {
-    width: 100%;
-    max-width: 120px; /* Reduced from 180px */
-    height: auto;
-    margin: 0 auto 0.5rem; /* Reduced bottom margin */
-    display: block;
-    border-radius: 8px;
+    width: 80px; /* Even smaller badge size */
+    height: 80px;
+    margin: 0.3rem auto;
+    border-radius: 6px;
+    object-fit: contain;
 }
 
 .certification-card h3 {
     font-family: sans-serif; /* changed from 'Doodle', cursive */
     font-weight: 600;
-    font-size: 0.9rem; /* Reduced title size */
-    line-height: 1.3;
+    font-size: 0.85rem; /* Reduced title size */
+    line-height: 1.2;
+    text-align: center;
+    margin-bottom: 0.2rem;
 }
 
 .certification-card p {
     font-family: sans-serif; /* changed from 'Doodle', cursive */
     font-weight: 400;
+    font-size: 0.75rem;
     opacity: 0.8;
-    margin: 0.3rem 0;
+    margin: 0.1rem 0;
 }
 
 .certification-card a {
@@ -265,11 +267,11 @@ section {
 .cert-date {
     font-family: sans-serif; /* changed from 'Doodle', cursive */
     display: block;
-    margin-top: 0.2rem; /* Adjusted margin */
+    margin-top: 0.1rem; /* Adjusted margin */
     font-weight: 700; /* already bold */
-    font-size: 0.7rem; /* Adjusted date text */
+    font-size: 0.65rem; /* Adjusted date text */
     color: #ffffff; /* updated to a bolder, pure white color */
-    /* removed opacity to enhance boldness */
+    opacity: 0.9;
 }
 
 a {
@@ -371,7 +373,17 @@ a {
     }
     /* Added mobile adjustments for certification page */
     .certifications-grid {
-        grid-template-columns: 1fr; /* revert to single column on mobile */
-        padding: 0.5rem;
+        grid-template-columns: repeat(2, 1fr); /* Keep 2 columns on mobile */
+        gap: 0.5rem;
+        padding: 0.3rem;
+    }
+    
+    .certification-card {
+        padding: 0.3rem;
+    }
+    
+    .cert-badge {
+        width: 60px; /* Even smaller on mobile */
+        height: 60px;
     }
 }
