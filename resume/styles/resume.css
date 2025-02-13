@@ -1,0 +1,137 @@
+@import '../../styles/style.css';
+
+.resume-container {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 80px auto 2rem;
+    padding: 0 2rem;
+}
+
+.resume-sidebar {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 2rem;
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+    border: 1px solid var(--border-color);
+}
+
+.profile-section {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.profile-section .profile-img {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 1rem;
+}
+
+.profile-section .title {
+    color: var(--secondary-text);
+    font-size: 1.1rem;
+}
+
+.contact-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-section li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.8rem;
+    color: var(--secondary-text);
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.skill-tags span {
+    background: var(--button-bg);
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    border: 1px solid var(--button-border);
+}
+
+.resume-section {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid var(--border-color);
+}
+
+.experience-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.date {
+    color: var(--secondary-text);
+    font-size: 0.9rem;
+}
+
+.company {
+    color: var(--secondary-text);
+    margin-bottom: 1rem;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.project-card {
+    background: var(--button-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--button-border);
+}
+
+.project-tags {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.project-tags span {
+    background: var(--card-bg);
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+}
+
+@media (max-width: 968px) {
+    .resume-container {
+        grid-template-columns: 1fr;
+    }
+
+    .resume-sidebar {
+        position: relative;
+        top: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .resume-container {
+        padding: 0 1rem;
+        margin-top: 60px;
+    }
+
+    .experience-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

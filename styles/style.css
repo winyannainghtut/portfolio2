@@ -60,6 +60,14 @@ html {
     overflow-y: auto;  /* Changed from hidden */
 }
 
+/* Modify scrolling behavior */
+html, body {
+    overflow: hidden;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 /* Content Protection */
 img {
     pointer-events: none;
@@ -86,6 +94,7 @@ img {
     height: 100vh;
     overflow-y: auto;
     padding-top: 0; /* Removed fixed padding */
+    overflow: hidden;
 }
 
 section {
@@ -96,6 +105,9 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
 }
 
 /* Navigation */
@@ -523,36 +535,15 @@ a {
         scroll-snap-type: none; /* disable snap for smoother scrolling */
         overflow-y: auto;
         -webkit-overflow-scrolling: touch; /* enable momentum scrolling */
+        overflow: hidden;
     }
     section {
         scroll-snap-align: none; /* disable snap alignment */
+        height: 100vh;
+        overflow: hidden;
     }
-    /* Added mobile adjustments for certification page */
-    .certifications-grid {
-        grid-template-columns: repeat(2, 1fr); /* Keep 2 columns on mobile */
-        gap: 1rem;
-        padding: 0.5rem;
-    }
-    
-    .certification-card {
-        padding: 1rem;
-    }
-    
-    .cert-badge {
-        width: 50px;
-        height: 50px;
-    }
-    
-    .experience-section {
-        padding: 1.5rem;
-    }
-    
-    .experience-item {
-        padding-left: 0.8rem;
-    }
-    
-    .about-description {
-        font-size: 1rem;
+    html, body {
+        overflow: hidden;
     }
 }
 
@@ -581,4 +572,39 @@ a {
 .theme-light .social-links a,
 .theme-light .cert-date {
     color: inherit;
+}
+
+/* Mouse Bubble Effect */
+.mouse-bubble {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: screen;
+    transition: transform 0.1s ease-out;
+}
+
+.bubble-trail {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    mix-blend-mode: screen;
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+}
+
+/* Theme-specific bubble colors */
+.theme-light .mouse-bubble {
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.05) 50%, transparent 70%);
+}
+
+.theme-light .bubble-trail {
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.05) 0%, transparent 70%);
 }
