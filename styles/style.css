@@ -1,8 +1,9 @@
 /* Reset and Base Styles */
 :root {
-    --primary-bg: #1a1a1a;
-    --text-color: #e0e0e0;
-    --card-bg: #282828;
+    --primary-bg: #0a0a0a;
+    --text-color: #ffffff;
+    --card-bg: rgba(30, 30, 30, 0.3);
+    --card-hover: rgba(40, 40, 40, 0.4);
     --accent-color: #4a9eff;
     --border-color: #404040;
 }
@@ -25,7 +26,7 @@ body {
     background: var(--primary-bg);
     color: var(--text-color);
     line-height: 1.6;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.2px;
     height: 100vh;
     overflow: hidden;
 }
@@ -75,10 +76,11 @@ section {
     position: fixed;
     top: 0;
     width: 100%;
-    background: var(--primary-bg);
-    padding: 1rem;
+    background: rgba(20, 20, 20, 0.95);
+    padding: 1.5rem;
+    backdrop-filter: blur(10px);
     z-index: 1000;
-    border-bottom: 2px solid var(--border-color);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .nav-links {
@@ -229,11 +231,11 @@ section {
 }
 
 .certification-card {
-    background: var(--card-bg);
-    border: 2px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     padding: 1.5rem;
-    border-radius: 0;
-    transition: border-color 0.3s ease;
+    border-radius: 16px;
+    transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
     display: flex;
@@ -242,14 +244,26 @@ section {
 }
 
 .certification-card::before {
-    display: none;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        45deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.05) 50%,
+        transparent 100%
+    );
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
 }
 
 .certification-card:hover {
-    transform: none;
-    border-color: var(--accent-color);
-    background: var(--card-bg);
-    box-shadow: none;
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.3);
 }
 
 .cert-badge {
@@ -257,7 +271,7 @@ section {
     height: 70px;
     margin-bottom: 1rem;
     border: 2px solid var(--border-color);
-    border-radius: 0;
+    border-radius: 12px;
     object-fit: contain;
     background: rgba(255, 255, 255, 0.03);
     padding: 0.5rem;
@@ -306,9 +320,9 @@ a {
     left: 0;
     width: 100%;
     padding: 0.8rem;
-    background: var(--primary-bg);
-    border-top: 2px solid var(--border-color);
+    background: rgba(20, 20, 20, 0.95);
     backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
     text-align: center;
     z-index: 1000;
     font-size: 0.9rem;
@@ -329,15 +343,15 @@ a {
 @keyframes slideRole {
     0%, 3% {
         opacity: 0;
-        transform: translateX(-20px);
+        transform: translateY(20px);
     }
     5%, 45% {
         opacity: 1;
-        transform: translateX(0);
+        transform: translateY(0);
     }
     47%, 100% {
         opacity: 0;
-        transform: translateX(20px);
+        transform: translateY(-20px);
     }
 }
 
