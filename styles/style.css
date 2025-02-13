@@ -62,8 +62,9 @@ html {
 
 /* Modify scrolling behavior */
 html, body {
-    overflow: hidden;
-    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto; /* Revert to auto for normal scrolling */
+    height: auto;     /* Revert to auto */
     margin: 0;
     padding: 0;
 }
@@ -92,7 +93,7 @@ img {
 /* Layout */
 .page-container {
     height: 100vh;
-    overflow-y: auto;
+    overflow: auto; /* Allow normal scrolling */
     padding-top: 0; /* Removed fixed padding */
     overflow: hidden;
 }
@@ -110,8 +111,8 @@ section {
     overflow: hidden;
 }
 
-/* Navigation */
-.navbar {
+/* Remove these navigation styles */
+/*.navbar {
     position: fixed;
     top: 0;
     width: 100%;
@@ -147,7 +148,7 @@ section {
 
 .nav-links a::after {
     display: none; /* Remove any existing underline effects */
-}
+}*/
 
 .hero {
     padding-top: 2rem;
@@ -524,10 +525,11 @@ a {
 }
 
 @media (max-width: 768px) {
-    .nav-links {
+    /* Remove this part */
+    /*.nav-links {
         gap: 1rem;
         font-size: 0.9rem;
-    }
+    }*/
     .hero h1 {
         font-size: 2rem;
     }
@@ -607,4 +609,39 @@ a {
 
 .theme-light .bubble-trail {
     background: radial-gradient(circle, rgba(0, 0, 0, 0.05) 0%, transparent 70%);
+}
+
+/* Scroll to top button */
+.scroll-top {
+    position: fixed;
+    bottom: 3rem;
+    right: 1.5rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.scroll-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.scroll-top:hover {
+    background: var(--card-hover);
+    transform: translateY(-3px);
 }
