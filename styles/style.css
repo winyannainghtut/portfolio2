@@ -35,24 +35,18 @@
 }
 
 /* Reset and Base Styles */
-body {
-    font-family: sans-serif; /* changed from 'Doodle', cursive */
-    background: var(--primary-bg);
-    color: var(--text-color);
-    line-height: 1.6;
-    letter-spacing: 0.2px;
-    height: 100vh;
-    overflow-y: auto;  /* Changed from hidden */
-    overflow-x: hidden;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    -webkit-user-select: none;
-    user-select: none;
+}
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background: var(--primary-bg);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
 }
 
 html {
@@ -90,80 +84,38 @@ img {
     z-index: 2;
 }
 
-/* Layout */
+/* Basic Layout */
 .page-container {
-    height: 100vh;
-    overflow: auto; /* Allow normal scrolling */
-    padding-top: 0; /* Removed fixed padding */
-    overflow: hidden;
+    min-height: 100vh;
+    position: relative;
 }
 
 section {
-    scroll-snap-align: start;
     min-height: 100vh;
     width: 100%;
     padding: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    position: relative;
-    overflow: hidden;
 }
 
-/* Remove these navigation styles */
-/*.navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: var(--navbar-bg);
-    padding: 1rem;
-    backdrop-filter: blur(10px);
-    z-index: 1000;
-    border-bottom: 1px solid var(--border-color);
-    transition: all 0.3s ease;
-}
-
-.nav-links {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    list-style: none;
-}
-
-.nav-links a {
-    color: var(--text-color);
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 1.1rem;
-    opacity: 0.8;
-    transition: opacity 0.3s ease, color 0.3s ease;
-}
-
-.nav-links a:hover {
-    color: var(--text-color);
-    opacity: 1;
-    transform: translateY(-2px);
-}
-
-.nav-links a::after {
-    display: none; /* Remove any existing underline effects */
-}*/
-
+/* Hero Section */
 .hero {
-    padding-top: 2rem;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     text-align: center;
+    padding: 4rem 2rem;
+}
+
+.profile-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+    margin: 0 auto 2rem;
 }
 
 .hero h1 {
-    font-family: sans-serif; /* changed from 'Doodle', cursive */
-    font-weight: 700;
     font-size: 2.8rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 .hero p {
@@ -193,16 +145,6 @@ section {
 
 .role-text span:nth-child(2) {
     animation-delay: 3s;
-}
-
-.profile-img {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-    display: block;
-    margin: 0 auto;
 }
 
 .social-links {
@@ -241,6 +183,7 @@ section {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
+    padding: 0 2rem;
     align-items: start;
 }
 
@@ -343,8 +286,7 @@ section {
     gap: 1.5rem;
     width: 100%;
     max-width: 1200px;
-    margin: 2rem auto 0;
-    padding: 0;
+    padding: 0 2rem;
 }
 
 .certification-card {
@@ -422,32 +364,10 @@ a {
 }
 
 .footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 0.8rem;
-    background: var(--navbar-bg);
-    backdrop-filter: blur(10px);
     text-align: center;
+    padding: 1rem;
+    background: var(--navbar-bg);
     border-top: 1px solid var(--border-color);
-    z-index: 1000;
-    font-size: 0.9rem;
-    opacity: 0.8;
-    transition: all 0.3s ease;
-    color: var(--secondary-text);
-}
-
-/* Remove these experience section styles */
-.experience-section,
-.experience-section h3,
-.experience-item,
-.experience-item h4,
-.experience-item .company,
-.experience-item ul,
-.experience-item ul li,
-.experience-item ul li::before {
-    display: none;
 }
 
 .blog-button {
@@ -525,27 +445,13 @@ a {
 }
 
 @media (max-width: 768px) {
-    /* Remove this part */
-    /*.nav-links {
-        gap: 1rem;
-        font-size: 0.9rem;
-    }*/
+    .about-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
     .hero h1 {
         font-size: 2rem;
-    }
-    .page-container {
-        scroll-snap-type: none; /* disable snap for smoother scrolling */
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch; /* enable momentum scrolling */
-        overflow: hidden;
-    }
-    section {
-        scroll-snap-align: none; /* disable snap alignment */
-        height: 100vh;
-        overflow: hidden;
-    }
-    html, body {
-        overflow: hidden;
     }
 }
 

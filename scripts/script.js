@@ -1,24 +1,23 @@
 // Theme Management
-const themeToggle = document.querySelector('.theme-toggle');
-const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-
-// Set theme function
 function setTheme(theme) {
     document.body.classList.remove('theme-light', 'theme-dark');
     document.body.classList.add(`theme-${theme}`);
-    themeToggle.querySelector('i').className = theme === 'light' 
-        ? 'fas fa-moon' 
-        : 'fas fa-sun';
+    localStorage.setItem('theme', theme);
+    
+    const icon = document.querySelector('.theme-toggle i');
+    icon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
 }
 
 // Initialize theme
-setTheme(localStorage.getItem('theme') || (prefersDarkScheme.matches ? 'dark' : 'light'));
+const savedTheme = localStorage.getItem('theme');
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+const defaultTheme = prefersDark.matches ? 'dark' : 'light';
+setTheme(savedTheme || defaultTheme);
 
-// Theme toggle handler
-themeToggle.addEventListener('click', () => {
+// Theme toggle
+document.querySelector('.theme-toggle').addEventListener('click', () => {
     const newTheme = document.body.classList.contains('theme-light') ? 'dark' : 'light';
     setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
 });
 
 // Smooth Scroll
@@ -55,7 +54,7 @@ document.querySelectorAll('img').forEach(img => {
 });
 
 // System theme changes
-prefersDarkScheme.addEventListener('change', (e) => {
+prefersDark.addEventListener('change', (e) => {
     if (!localStorage.getItem('theme')) {
         setTheme(e.matches ? 'dark' : 'light');
     }
@@ -64,19 +63,10 @@ prefersDarkScheme.addEventListener('change', (e) => {
 // Scroll to top functionality
 const scrollTopBtn = document.getElementById('scroll-top');
 
-// Show/hide scroll-to-top button
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-        scrollTopBtn.classList.add('visible');
-    } else {
-        scrollTopBtn.classList.remove('visible');
-    }
+    scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
 });
 
-// Scroll to top when button is clicked
 scrollTopBtn.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 });
