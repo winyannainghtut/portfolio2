@@ -8,15 +8,9 @@ const currentTheme = localStorage.getItem('theme') ||
 
 // Initialize theme
 function setTheme(theme) {
-    document.documentElement.style.setProperty('--theme-transition', 'all 0.3s ease');
     document.body.classList.remove('theme-light', 'theme-dark');
     document.body.classList.add(`theme-${theme}`);
     updateThemeIcon(theme);
-    
-    // Remove transition after theme change
-    setTimeout(() => {
-        document.documentElement.style.removeProperty('--theme-transition');
-    }, 300);
 }
 
 // Set initial theme
@@ -86,11 +80,10 @@ document.querySelectorAll('.certification-card').forEach(card => {
     observer.observe(card);
 });
 
-// Optimized Scroll Handler
+// Remove complex scroll handling
 const pageContainer = document.querySelector('.page-container');
 if (pageContainer) {
-    // Remove the complex scroll handling to allow native smooth scroll
-    pageContainer.removeEventListener('wheel', handleScroll);
+    pageContainer.style.scrollBehavior = 'smooth';
 }
 
 // Content Protection

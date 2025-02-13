@@ -1,3 +1,39 @@
+/* Theme definitions */
+.theme-dark {
+    --primary-bg: #0a0a0a;
+    --text-color: #ffffff;
+    --secondary-text: rgba(255, 255, 255, 0.8);
+    --card-bg: rgba(30, 30, 30, 0.3);
+    --card-hover: rgba(40, 40, 40, 0.4);
+    --navbar-bg: rgba(20, 20, 20, 0.95);
+    --border-color: rgba(255, 255, 255, 0.1);
+    --card-shadow: rgba(0, 0, 0, 0.3);
+    --section-gradient: linear-gradient(rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.95));
+    --button-bg: rgba(255, 255, 255, 0.1);
+    --button-border: rgba(255, 255, 255, 0.2);
+    --button-hover: rgba(255, 255, 255, 0.2);
+}
+
+.theme-light {
+    --primary-bg: #f8f9fa;
+    --text-color: #212529;
+    --secondary-text: #495057;
+    --card-bg: #ffffff;
+    --card-hover: #f8f9fa;
+    --navbar-bg: rgba(255, 255, 255, 0.95);
+    --border-color: rgba(0, 0, 0, 0.1);
+    --card-shadow: rgba(0, 0, 0, 0.1);
+    --section-gradient: linear-gradient(#f8f9fa, #ffffff);
+    --button-bg: #e9ecef;
+    --button-border: #dee2e6;
+    --button-hover: #ced4da;
+}
+
+/* Apply theme to root */
+:root {
+    color-scheme: dark light;
+}
+
 /* Reset and Base Styles */
 body {
     font-family: sans-serif; /* changed from 'Doodle', cursive */
@@ -49,16 +85,14 @@ img {
 .page-container {
     height: 100vh;
     overflow-y: auto;
-    padding-top: 60px; /* Added to account for fixed navbar */
-    scroll-behavior: smooth;
+    padding-top: 0; /* Removed fixed padding */
 }
 
 section {
     scroll-snap-align: start;
-    scroll-snap-stop: always;
     min-height: 100vh;
     width: 100%;
-    padding: 4rem 2rem; /* Increased padding */
+    padding: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -70,21 +104,17 @@ section {
     top: 0;
     width: 100%;
     background: var(--navbar-bg);
-    padding: 1.5rem;
+    padding: 1rem;
     backdrop-filter: blur(10px);
     z-index: 1000;
     border-bottom: 1px solid var(--border-color);
     transition: all 0.3s ease;
-    height: 60px; /* Fixed height */
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .nav-links {
     display: flex;
     justify-content: center;
-    gap: 3rem; /* Increased gap */
+    gap: 2rem;
     list-style: none;
 }
 
@@ -108,21 +138,19 @@ section {
 }
 
 .hero {
-    min-height: calc(100vh - 60px); /* Account for navbar */
+    padding-top: 2rem;
+    min-height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: center;
     text-align: center;
-    padding: 2rem;
-    padding-top: 6rem; /* Increased top padding */
-    margin-top: 5rem;
 }
 
 .hero h1 {
     font-family: sans-serif; /* changed from 'Doodle', cursive */
     font-weight: 700;
-    font-size: 3rem; /* bigger heading */
-    margin-bottom: 1rem;
+    font-size: 2.8rem;
+    margin-bottom: 0.5rem;
 }
 
 .hero p {
@@ -188,12 +216,10 @@ section {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: start;
-    padding: 2rem 0;
-    margin-bottom: 4rem;
-    background: var(--section-gradient);
+    justify-content: center;
+    padding: 4rem 2rem;
+    background: var(--primary-bg);
     transition: all 0.3s ease;
-    border-bottom: 1px solid var(--border-color); /* subtle dividing line */
 }
 
 .about-container {
@@ -301,11 +327,11 @@ section {
 .certifications-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem; /* Increased gap */
+    gap: 1.5rem;
     width: 100%;
     max-width: 1200px;
     margin: 2rem auto 0;
-    padding: 1rem;
+    padding: 0;
 }
 
 .certification-card {
@@ -323,30 +349,13 @@ section {
 }
 
 .certification-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        45deg,
-        transparent 0%,
-        rgba(255, 255, 255, 0.05) 50%,
-        transparent 100%
-    );
-    transform: translateX(-100%);
-    transition: transform 0.6s ease;
+    display: none;
 }
 
 .certification-card:hover {
     transform: translateY(-5px);
     background: var(--card-hover);
     box-shadow: 0 10px 30px -15px var(--card-shadow);
-}
-
-.certification-card:hover::before {
-    transform: translateX(100%);
 }
 
 .cert-badge {
@@ -396,8 +405,7 @@ a {
     padding: 1rem 0;
     margin-bottom: 1rem;
     z-index: 10;
-    text-align: left;
-    font-size: 2rem;
+    text-align: center;
 }
 
 .footer {
@@ -505,7 +513,7 @@ a {
 
 @media (max-width: 768px) {
     .nav-links {
-        gap: 1.5rem;
+        gap: 1rem;
         font-size: 0.9rem;
     }
     .hero h1 {
@@ -518,18 +526,16 @@ a {
     }
     section {
         scroll-snap-align: none; /* disable snap alignment */
-        padding: 2rem 1rem;
     }
     /* Added mobile adjustments for certification page */
     .certifications-grid {
-        grid-template-columns: 1fr; /* Single column on mobile */
+        grid-template-columns: repeat(2, 1fr); /* Keep 2 columns on mobile */
         gap: 1rem;
         padding: 0.5rem;
     }
     
     .certification-card {
         padding: 1rem;
-        margin-bottom: 1rem;
     }
     
     .cert-badge {
@@ -547,14 +553,6 @@ a {
     
     .about-description {
         font-size: 1rem;
-    }
-
-    .about-container {
-        padding: 1rem;
-    }
-
-    .hero {
-        padding-top: 4rem;
     }
 }
 
@@ -579,24 +577,8 @@ a {
 }
 
 /* Theme-specific overrides */
-.theme-light .about-title {
-    background: linear-gradient(45deg, #212529, #495057);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-.theme-light .social-links a {
-    color: var(--text-color);
-}
-
+.theme-light .about-title,
+.theme-light .social-links a,
 .theme-light .cert-date {
-    color: var(--secondary-text);
-}
-
-/* Minimal container */
-.minimal-container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 2rem;
+    color: inherit;
 }
