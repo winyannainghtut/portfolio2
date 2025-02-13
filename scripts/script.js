@@ -7,18 +7,23 @@ const currentTheme = localStorage.getItem('theme') ||
     (prefersDarkScheme.matches ? 'dark' : 'light');
 
 // Initialize theme
-document.documentElement.setAttribute('data-theme', currentTheme);
-updateThemeIcon(currentTheme);
+function setTheme(theme) {
+    document.body.classList.remove('theme-light', 'theme-dark');
+    document.body.classList.add(`theme-${theme}`);
+    updateThemeIcon(theme);
+}
+
+// Set initial theme
+setTheme(currentTheme);
 
 // Theme toggle handler
 themeToggle.addEventListener('click', () => {
-    const newTheme = document.documentElement.getAttribute('data-theme') === 'light' 
+    const newTheme = document.body.classList.contains('theme-light') 
         ? 'dark' 
         : 'light';
     
-    document.documentElement.setAttribute('data-theme', newTheme);
+    setTheme(newTheme);
     localStorage.setItem('theme', newTheme);
-    updateThemeIcon(newTheme);
 });
 
 function updateThemeIcon(theme) {
@@ -158,7 +163,7 @@ window.addEventListener('load', () => {
 prefersDarkScheme.addEventListener('change', (e) => {
     if (!localStorage.getItem('theme')) {
         const newTheme = e.matches ? 'dark' : 'light';
-        document.documentElement.setAttribute('data-theme', newTheme);
+        setTheme(newTheme);
         updateThemeIcon(newTheme);
     }
 });
