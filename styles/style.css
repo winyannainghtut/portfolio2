@@ -55,7 +55,7 @@ img {
     height: 100vh;
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
-    scroll-behavior: smooth;
+    scroll-snap-behavior: smooth;
 }
 
 section {
@@ -367,5 +367,10 @@ a {
     }
     section {
         scroll-snap-align: none; /* disable snap alignment */
+    }
+    /* Added mobile adjustments for certification page */
+    .certifications-grid {
+        grid-template-columns: 1fr;
+        padding: 0.5rem;
     }
 }
