@@ -36,5 +36,41 @@ Network Engineer specializing in cloud technologies and network infrastructure. 
 
 ---
 
+# Portfolio Website
+
+A modern, responsive portfolio website showcasing my professional experience and certifications.
+
+## Features
+- Dark/Light theme support
+- Responsive design
+- Certificate showcase
+- Social media integration
+- Blog link integration
+
+## Tech Stack
+- HTML5
+- CSS3
+- JavaScript
+- Font Awesome Icons
+
+## Setup
+1. Clone the repository
+2. Place your profile image as `x.jpg` in the `jpg` directory
+3. Update the favicon in the `jpg` directory
+4. Open index.html in a browser
+
+## Structure
+```
+/portfolio
+├── index.html      # Main HTML file
+├── styles/         # CSS files
+├── scripts/        # JavaScript files
+└── jpg/           # Images
+```
+
+## Contact
+- [LinkedIn](https://www.linkedin.com/in/wynh/)
+- [Email](mailto:winyannainghtut98@gmail.com)
+
 **Maintained by:** Win Yan Naing Htut  
 🔄 Last Updated: February 2025
