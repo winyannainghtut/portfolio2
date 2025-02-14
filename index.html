@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,22 +10,28 @@
     
     <title>Win Yan Naing Htut - Portfolio</title>
     
-    <!-- Preload critical resources -->
+    <!-- Critical CSS Preload -->
     <link rel="preload" href="styles/themes.css" as="style">
     <link rel="preload" href="styles/style.css" as="style">
+    
+    <!-- Performance Optimization -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     
     <!-- Styles -->
     <link rel="icon" type="image/png" href="jpg/favicon.png">
-    <link rel="stylesheet" href="styles/themes.css">
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/themes.css" media="all">
+    <link rel="stylesheet" href="styles/style.css" media="all">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="all">
+    
+    <!-- Async Script Loading -->
+    <script src="scripts/script.js" defer></script>
 </head>
 <body class="theme-dark">
-    <canvas id="mouse-canvas"></canvas>
+    <canvas id="mouse-canvas" aria-hidden="true"></canvas>
     
     <button class="theme-toggle" aria-label="Toggle theme">
         <i class="fas fa-moon"></i>
@@ -327,8 +333,7 @@
         </div>
     </div>
 
-    <script src="scripts/script.js"></script>
-    <script src="scripts/snake.js"></script>
+    <script src="scripts/snake.js" defer></script>
     <script>
         let snakeGame = null;
         

@@ -42,13 +42,19 @@
 /* Apply theme to root */
 :root {
     color-scheme: dark light;
+    --primary-bg-dark: #0a0a0a;
+    --text-color-dark: #ffffff;
+    --primary-color: #3498db;
+    --transition-speed: 0.3s;
+    --border-radius: 12px;
 }
 
-/* Base Styles */
-* {
+/* Performance-focused base styles */
+*, *::before, *::after {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    transition: all var(--transition-speed) ease;
 }
 
 body {
@@ -63,6 +69,10 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overscroll-behavior: none;
 }
 
 /* Mouse Canvas */
@@ -74,6 +84,8 @@ body {
     height: 100%;
     pointer-events: none;
     z-index: 0;
+    transform: translateZ(0);
+    will-change: contents;
 }
 
 /* Container Styles */
@@ -83,6 +95,8 @@ body {
     padding: 2rem 4rem;
     max-width: 1600px;
     margin: 0 auto;
+    contain: layout;
+    will-change: contents;
 }
 
 .minimal-container {
@@ -112,6 +126,7 @@ body {
     object-fit: cover;
     border: 3px solid var(--border-color);
     transition: transform 0.3s ease, border-color 0.3s ease;
+    will-change: transform, border-color;
 }
 
 .profile-img:hover {
@@ -160,6 +175,7 @@ body {
     background: var(--card-bg);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    will-change: transform, background-color, box-shadow;
 }
 
 .social-links a:hover {
@@ -211,6 +227,7 @@ body {
     cursor: pointer;
     font-weight: 500;
     transition: all 0.3s ease;
+    will-change: transform, background-color, box-shadow;
 }
 
 .snake-btn:hover {
@@ -290,6 +307,7 @@ body {
     border-radius: 0.8rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid var(--border-color);
+    will-change: transform, box-shadow;
 }
 
 .skill-category:hover {
@@ -405,6 +423,7 @@ body {
     margin-bottom: 1.2rem;
     filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
     transition: transform 0.3s ease;
+    will-change: transform;
 }
 
 .cert-card:hover .cert-card-front img {
@@ -705,7 +724,8 @@ i {
     cursor: pointer;
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    -webkit-backpack-filter: blur(10px);
+    will-change: transform, background-color, box-shadow;
 }
 
 .theme-toggle:hover {
@@ -715,56 +735,49 @@ i {
     box-shadow: 0 8px 25px var(--card-shadow);
 }
 
-/* Scroll Top Button */
+/* Scroll to Top Button */
 .scroll-top {
     position: fixed;
-    right: 2rem;
-    bottom: 2rem;
-    width: 45px;
-    height: 45px;
-    background: var(--accent-color);
-    color: var(--bg-color);
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: var(--card-bg);
+    color: var(--text-color);
     border: none;
     border-radius: 50%;
-    cursor: pointer;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
+    cursor: pointer;
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-@media screen and (max-width: 768px) {
-    .scroll-top {
-        right: 1rem;
-        bottom: 5vh;
-        width: 40px;
-        height: 40px;
-        font-size: 1rem;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .scroll-top {
-        right: 0.8rem;
-        bottom: 7vh;
-        width: 42px;
-        height: 42px;
-    }
-}
-
-.scroll-top.visible {
-    opacity: 1;
-    visibility: visible;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    will-change: transform, background-color, box-shadow;
 }
 
 .scroll-top:hover {
+    background: var(--card-hover);
     transform: translateY(-3px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+.scroll-top i {
+    font-size: 1.2rem;
+}
+
+/* Responsive adjustments for scroll top button */
+@media screen and (max-width: 480px) {
+    .scroll-top {
+        width: 45px;
+        height: 45px;
+        right: 15px;
+        bottom: 15px;
+    }
+
+    .scroll-top i {
+        font-size: 1rem;
+    }
 }
 
 /* Mobile Responsive Adjustments */
@@ -906,6 +919,7 @@ i {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    will-change: transform, background-color, box-shadow;
 }
 
 .nav-link:hover {
@@ -970,4 +984,21 @@ input, textarea {
     -moz-user-select: text;
     -ms-user-select: text;
     user-select: text;
+}
+
+/* Lazy loading and performance optimization for images */
+img {
+    max-width: 100%;
+    height: auto;
+    will-change: transform;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+/* Media query for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
 }

@@ -137,6 +137,10 @@
         </main>
     </div>
 
+    <button id="scroll-top" class="scroll-top" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
     <button class="theme-toggle" aria-label="Toggle theme">
         <i class="fas fa-moon"></i>
     </button>
@@ -165,7 +169,7 @@
 
         async function downloadCV() {
             // Hide elements we don't want in the PDF
-            const elementsToHide = document.querySelectorAll('.nav-buttons, .theme-toggle, #mouse-canvas');
+            const elementsToHide = document.querySelectorAll('.nav-buttons, .theme-toggle, #mouse-canvas, .scroll-top');
             elementsToHide.forEach(el => el.style.display = 'none');
             
             // Force light theme for PDF
@@ -200,6 +204,7 @@
                 elementsToHide.forEach(el => el.style.display = 'block');
                 document.querySelector('#mouse-canvas').style.display = 'block';
                 document.querySelector('.nav-buttons').style.display = 'flex';
+                document.querySelector('.scroll-top').style.display = 'block';
                 
                 // Restore original theme
                 document.body.classList.remove('theme-light');
@@ -212,11 +217,12 @@
                 elementsToHide.forEach(el => el.style.display = 'block');
                 document.querySelector('#mouse-canvas').style.display = 'block';
                 document.querySelector('.nav-buttons').style.display = 'flex';
+                document.querySelector('.scroll-top').style.display = 'block';
                 document.body.classList.remove('theme-light');
                 document.body.classList.add('theme-dark');
             }
         }
     </script>
-    <script src="scripts/script.js"></script>
+    <script src="scripts/script.js" defer></script>
 </body>
 </html>
