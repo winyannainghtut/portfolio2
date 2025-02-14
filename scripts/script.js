@@ -67,6 +67,19 @@ window.addEventListener('scroll', () => {
     scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
 });
 
+// New Scroll Effect per session
+let isScrollEffectActive = false;
+window.addEventListener('scroll', () => {
+    if (!isScrollEffectActive) {
+        isScrollEffectActive = true;
+        document.body.classList.add('scroll-effect');
+        setTimeout(() => {
+            document.body.classList.remove('scroll-effect');
+            isScrollEffectActive = false;
+        }, 300);
+    }
+});
+
 scrollTopBtn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });

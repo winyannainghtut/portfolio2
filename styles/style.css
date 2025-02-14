@@ -509,6 +509,16 @@ a {
     50% { transform: scale(1.1); }
 }
 
+/* Scroll effect per session styles */
+@keyframes scrollPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.98); }
+    100% { transform: scale(1); }
+}
+body.scroll-effect {
+    animation: scrollPulse 0.4s ease-out;
+}
+
 @media (max-width: 768px) {
     .about-container {
         grid-template-columns: 1fr;
