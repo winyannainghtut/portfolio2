@@ -1,79 +1,115 @@
-// Theme Management
+// Theme Toggle
+const themeToggle = document.querySelector('.theme-toggle');
+const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+let currentTheme = localStorage.getItem('theme') || (prefersDarkScheme.matches ? 'dark' : 'light');
+
 function setTheme(theme) {
-    document.body.classList.remove('theme-light', 'theme-dark');
-    document.body.classList.add(`theme-${theme}`);
+    document.body.className = `theme-${theme}`;
+    themeToggle.innerHTML = theme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
     localStorage.setItem('theme', theme);
-    
-    const icon = document.querySelector('.theme-toggle i');
-    icon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+    currentTheme = theme;
 }
 
-// Initialize theme
-const savedTheme = localStorage.getItem('theme');
-const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-const defaultTheme = 'dark'; // Changed this line to always default to dark
-setTheme(savedTheme || defaultTheme);
-
-// Theme toggle
-document.querySelector('.theme-toggle').addEventListener('click', () => {
-    const newTheme = document.body.classList.contains('theme-light') ? 'dark' : 'light';
+themeToggle.addEventListener('click', () => {
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
     setTheme(newTheme);
 });
 
-// Smooth Scroll
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href').slice(1);
-        const target = document.getElementById(targetId);
+// Initialize theme
+setTheme(currentTheme);
+
+// Mouse trail effect
+const canvas = document.getElementById('mouse-canvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+class Particle {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.size = Math.random() * 3 + 1;
+        this.speedX = Math.random() * 2 - 1;
+        this.speedY = Math.random() * 2 - 1;
+        this.life = 1;
+    }
+
+    update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        this.life -= 0.02;
         
-        if (target) {
-            const headerOffset = 80; // Adjust this value based on your header height
-            const elementPosition = target.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        if (this.size > 0.3) this.size -= 0.1;
+    }
 
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth'
-            });
+    draw() {
+        ctx.fillStyle = `hsla(${currentTheme === 'dark' ? '220' : '210'}, 50%, 50%, ${this.life})`;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+    }
+}
+
+let mouse = {
+    x: null,
+    y: null,
+    lastX: null,
+    lastY: null
+};
+
+window.addEventListener('mousemove', (e) => {
+    mouse.lastX = mouse.x;
+    mouse.lastY = mouse.y;
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+
+    if (mouse.lastX !== null) {
+        const deltaX = mouse.x - mouse.lastX;
+        const deltaY = mouse.y - mouse.lastY;
+        const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+        const numParticles = Math.floor(distance / 10);
+
+        for (let i = 0; i < numParticles; i++) {
+            const x = mouse.lastX + (deltaX * i) / numParticles;
+            const y = mouse.lastY + (deltaY * i) / numParticles;
+            particles.push(new Particle(x, y));
         }
-    });
-});
-
-// Content Protection
-const protectedEvents = ['contextmenu', 'selectstart', 'dragstart'];
-protectedEvents.forEach(event => document.addEventListener(event, e => e.preventDefault()));
-
-document.addEventListener('keydown', (e) => {
-    if (
-        e.key === 'F12' ||
-        (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key)) ||
-        (e.ctrlKey && e.key === 'U') ||
-        (e.ctrlKey && ['s', 'c', 'v'].includes(e.key))
-    ) {
-        e.preventDefault();
     }
 });
 
-// Image Protection
-document.querySelectorAll('img').forEach(img => {
-    img.draggable = false;
-    img.style.webkitUserSelect = 'none';
-    img.style.webkitTouchCallout = 'none';
-});
-
-// System theme changes
-prefersDark.addEventListener('change', (e) => {
-    if (!localStorage.getItem('theme')) {
-        setTheme(e.matches ? 'dark' : 'light');
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    for (let i = particles.length - 1; i >= 0; i--) {
+        particles[i].update();
+        particles[i].draw();
+        
+        if (particles[i].life <= 0) {
+            particles.splice(i, 1);
+        }
     }
-});
+    
+    requestAnimationFrame(animate);
+}
 
-// Scroll to top functionality
+animate();
+
+// Scroll to top button
 const scrollTopBtn = document.getElementById('scroll-top');
 
 window.addEventListener('scroll', () => {
-    scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
+    if (window.pageYOffset > 300) {
+        scrollTopBtn.classList.add('visible');
+    } else {
+        scrollTopBtn.classList.remove('visible');
+    }
 });
 
 scrollTopBtn.addEventListener('click', () => {
@@ -83,120 +119,53 @@ scrollTopBtn.addEventListener('click', () => {
     });
 });
 
-// Removed: Page-by-page scroll feature that was overriding natural smooth scrolling
+// Add fade-in animation to elements
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
 
-// Mouse connecting dots effect
-const canvas = document.getElementById('mouse-canvas');
-const ctx = canvas.getContext('2d');
-
-// Set canvas size
-function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-}
-
-// Initial resize
-resizeCanvas();
-window.addEventListener('resize', resizeCanvas);
-
-// Dots configuration
-const dots = [];
-const maxDots = 50;
-const dotSize = 2;
-const maxDistance = 100;
-let mouseX = 0;
-let mouseY = 0;
-
-// Dot class
-class Dot {
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
-        this.vx = (Math.random() - 0.5) * 2;
-        this.vy = (Math.random() - 0.5) * 2;
-    }
-
-    update() {
-        this.x += this.vx;
-        this.y += this.vy;
-
-        // Bounce off edges
-        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-
-        // Attraction to mouse
-        const dx = mouseX - this.x;
-        const dy = mouseY - this.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < maxDistance) {
-            this.vx += (dx / dist) * 0.1;
-            this.vy += (dy / dist) * 0.1;
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in');
+            observer.unobserve(entry.target);
         }
+    });
+}, observerOptions);
 
-        // Limit speed
-        const speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
-        if (speed > 2) {
-            this.vx = (this.vx / speed) * 2;
-            this.vy = (this.vy / speed) * 2;
-        }
-    }
-}
-
-// Initialize dots
-for (let i = 0; i < maxDots; i++) {
-    dots.push(new Dot(
-        Math.random() * canvas.width,
-        Math.random() * canvas.height
-    ));
-}
-
-// Update mouse position
-document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
+document.querySelectorAll('.certification-card, .skill-category, .about-description').forEach(el => {
+    el.style.opacity = '0';
+    observer.observe(el);
 });
 
-// Animation loop
-function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+// Disable right-click and context menu
+document.addEventListener('contextmenu', (e) => {
+    e.preventDefault();
+    return false;
+});
 
-    // Update and draw dots
-    dots.forEach(dot => {
-        dot.update();
-    });
+// Disable keyboard shortcuts that could be used to copy content
+document.addEventListener('keydown', (e) => {
+    // Disable Ctrl+C, Ctrl+U, Ctrl+S, F12
+    if (
+        (e.ctrlKey && (e.key === 'c' || e.key === 'C' || 
+                      e.key === 'u' || e.key === 'U' ||
+                      e.key === 's' || e.key === 'S')) ||
+        e.key === 'F12'
+    ) {
+        e.preventDefault();
+        return false;
+    }
+});
 
-    // Draw connections
-    ctx.beginPath();
-    ctx.strokeStyle = document.body.classList.contains('theme-light') 
-        ? 'rgba(0,0,0,0.1)' 
-        : 'rgba(255,255,255,0.1)';
+// Disable drag and drop of images
+document.addEventListener('dragstart', (e) => {
+    e.preventDefault();
+    return false;
+});
 
-    dots.forEach((dot, i) => {
-        dots.slice(i + 1).forEach(otherDot => {
-            const dx = dot.x - otherDot.x;
-            const dy = dot.y - otherDot.y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-
-            if (dist < maxDistance) {
-                ctx.lineWidth = (1 - dist / maxDistance) * 1;
-                ctx.beginPath();
-                ctx.moveTo(dot.x, dot.y);
-                ctx.lineTo(otherDot.x, otherDot.y);
-                ctx.stroke();
-            }
-        });
-
-        // Draw dot
-        ctx.fillStyle = document.body.classList.contains('theme-light')
-            ? 'rgba(0,0,0,0.2)'
-            : 'rgba(255,255,255,0.2)';
-        ctx.beginPath();
-        ctx.arc(dot.x, dot.y, dotSize, 0, Math.PI * 2);
-        ctx.fill();
-    });
-
-    requestAnimationFrame(animate);
+// Print CV function
+function printCV() {
+    window.print();
 }
-
-// Start animation
-animate();

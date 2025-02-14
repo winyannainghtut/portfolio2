@@ -3,87 +3,174 @@
     z-index: 1;
     max-width: 1000px;
     margin: 2rem auto;
-    padding: 2rem;
+    padding: 2.5rem;
     background: var(--card-bg);
-    border-radius: 16px;
+    border-radius: 24px;
     border: 1px solid var(--border-color);
-    box-shadow: 0 4px 12px var(--card-shadow);
+    box-shadow: 0 8px 32px var(--card-shadow);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .cv-header {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.cv-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.cv-header p {
+    color: var(--secondary-text);
+    margin: 0.5rem 0;
+}
+
+.cv-header a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.cv-header a:hover {
+    color: var(--primary-color);
 }
 
 .cv-section {
-    margin-bottom: 2rem;
-    padding-bottom: 1rem;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
     border-bottom: 1px solid var(--border-color);
+    transition: transform 0.3s ease;
+}
+
+.cv-section:hover {
+    transform: translateX(5px);
 }
 
 .cv-section h2 {
     color: var(--text-color);
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    position: relative;
+}
+
+.cv-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: var(--primary-color);
+    border-radius: 2px;
 }
 
 .experience-item, .education-item {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: var(--card-hover);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+.experience-item:hover, .education-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px var(--card-shadow);
 }
 
 .experience-item h3, .education-item h3 {
     color: var(--text-color);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
+    font-size: 1.3rem;
 }
 
 .date {
-    color: var(--secondary-text);
+    color: var(--primary-color);
     font-size: 0.9rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
 }
 
 .nav-buttons {
     position: fixed;
-    top: 1rem;
-    left: 1rem;
+    top: 2rem;
+    left: 2rem;
     display: flex;
     gap: 1rem;
     z-index: 1000;
 }
 
 .nav-button {
-    padding: 0.8rem 1.5rem;
-    background: var(--button-bg);
-    border: 1px solid var(--button-border);
-    border-radius: 6px;
+    padding: 1rem 1.8rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
     color: var(--text-color);
     text-decoration: none;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.8rem;
     transition: all 0.3s ease;
     cursor: pointer;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .nav-button:hover {
-    transform: translateY(-2px);
-    background: var(--button-hover);
-    box-shadow: 0 5px 15px var(--card-shadow);
+    transform: translateY(-3px);
+    background: var(--card-hover);
+    box-shadow: 0 8px 25px var(--card-shadow);
+    border-color: var(--primary-color);
+}
+
+.nav-button i {
+    font-size: 1.1rem;
+    color: var(--primary-color);
 }
 
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
+    margin-top: 1.5rem;
 }
 
 .skill-category {
-    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    background: var(--card-hover);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+.skill-category:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px var(--card-shadow);
 }
 
 .skill-category h3 {
     color: var(--text-color);
-    margin-bottom: 0.8rem;
-    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.skill-category h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    background: var(--primary-color);
+    border-radius: 1px;
 }
 
 .skill-category ul {
@@ -93,47 +180,84 @@
 
 .skill-category ul li {
     color: var(--secondary-text);
-    margin-bottom: 0.5rem;
-    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
-.cv-section ul li {
-    color: var(--secondary-text);
-    margin-bottom: 0.5rem;
-    line-height: 1.5;
+.skill-category ul li::before {
+    content: '•';
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.theme-toggle {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    z-index: 1000;
+    padding: 1rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.theme-toggle:hover {
+    transform: translateY(-3px);
+    background: var(--card-hover);
+    box-shadow: 0 8px 25px var(--card-shadow);
+    border-color: var(--primary-color);
+}
+
+@media (max-width: 768px) {
+    .cv-container {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+    
+    .nav-buttons {
+        top: 1rem;
+        left: 1rem;
+    }
+    
+    .theme-toggle {
+        top: 1rem;
+        right: 1rem;
+    }
+    
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .cv-header h1 {
+        font-size: 2rem;
+    }
 }
 
 @media print {
-    body {
-        background: white !important;
-        color: black !important;
-    }
-
-    .cv-container {
-        margin: 0;
-        padding: 0;
-        box-shadow: none;
-        border: none;
-    }
-
     .nav-buttons,
     .theme-toggle,
     #mouse-canvas {
-        display: none !important;
+        display: none;
     }
-
-    a {
-        text-decoration: none;
-        color: black !important;
+    
+    .cv-container {
+        margin: 0;
+        padding: 2rem;
+        box-shadow: none;
+        border: none;
     }
-
-    .cv-section {
+    
+    .experience-item,
+    .education-item,
+    .skill-category {
         break-inside: avoid;
-        page-break-inside: avoid;
-    }
-
-    @page {
-        margin: 1.5cm;
-        size: A4;
     }
 }
