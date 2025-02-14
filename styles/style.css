@@ -409,30 +409,52 @@ a {
 .blog-button {
     margin-top: 1.5rem;
     display: flex;
+    gap: 1rem;
     justify-content: center;
 }
 
 .blog-button a {
-    padding: 0.5rem 1.5rem;
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 25px;
+    padding: 0.8rem 1.5rem;
+    background: var(--button-bg);
+    border: 1px solid var(--button-border);
+    border-radius: 6px;
     color: var(--text-color);
     font-size: 1rem;
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    backdrop-filter: blur(10px);
-    background-color: var(--button-bg);
-    background-image: var(--paper-texture);
-    box-shadow: 0 1px 3px var(--card-shadow);
+    min-width: 100px;
+    justify-content: center;
 }
 
 .blog-button a:hover {
     transform: translateY(-2px);
+    background: var(--button-hover);
+    box-shadow: 0 5px 15px var(--card-shadow);
+}
+
+.blog-button.fixed {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1001;
+    margin: 0;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.blog-button.fixed a {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
+}
+
+.blog-button.fixed a:hover {
+    transform: translateY(-2px);
     background: var(--card-hover);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Blog and CV buttons */
@@ -638,83 +660,5 @@ body.scroll-effect {
     #certifications {
         -webkit-overflow-scrolling: auto;
         overscroll-behavior: auto;
-    }
-}
-
-/* Remove CV-related media queries */
-@media print {
-    body {
-        background: white;
-    }
-    
-    .theme-toggle,
-    .nav-button,
-    .cv-download-btn,
-    #mouse-canvas {
-        display: none;
-    }
-}
-
-@media (max-width: 768px) {
-    .cv-profile {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .cv-contact {
-        justify-content: center;
-    }
-
-    .cv-container {
-        margin: 1rem;
-        padding: 1rem;
-    }
-    
-    .timeline-header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    .certifications-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* Print styles for CV */
-@media print {
-    body {
-        background: white;
-    }
-    
-    .theme-toggle,
-    .nav-button,
-    .cv-download-btn,
-    #mouse-canvas {
-        display: none;
-    }
-}
-
-@media (max-width: 768px) {
-    .cv-profile {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .cv-contact {
-        justify-content: center;
-    }
-
-    .cv-container {
-        margin: 1rem;
-        padding: 1rem;
-    }
-    
-    .timeline-header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    .certifications-grid {
-        grid-template-columns: 1fr;
     }
 }

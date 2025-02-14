@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Win Yan Naing Htut - CV</title>
+    <link rel="stylesheet" href="styles/themes.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/cv.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="theme-dark">
+    <canvas id="mouse-canvas"></canvas>
+    <div class="nav-buttons">
+        <a href="index.html" class="nav-button">
+            <i class="fas fa-arrow-left"></i> Back
+        </a>
+        <button onclick="printCV()" class="nav-button">
+            <i class="fas fa-download"></i> Download CV
+        </button>
+    </div>
+
+    <div class="cv-container">
+        <div class="cv-header">
+            <h1>Win Yan Naing Htut</h1>
+            <p>Network Engineer & Cloud Specialist</p>
+            <p>
+                <a href="mailto:winyannainghtut98@gmail.com">winyannainghtut98@gmail.com</a> |
+                <a href="https://www.linkedin.com/in/wynh/" target="_blank">LinkedIn</a>
+            </p>
+        </div>
+
+        <div class="cv-section">
+            <h2>Summary</h2>
+            <p>Experienced Network Engineer and Cloud Specialist with expertise in enterprise networking, cloud infrastructure, and security. Proven track record in designing and implementing complex network solutions, with extensive knowledge in cloud technologies and infrastructure automation. Strong foundation in both traditional networking and modern cloud-native architectures.</p>
+        </div>
+
+        <div class="cv-section">
+            <h2>Professional Experience</h2>
+            <div class="experience-item">
+                <h3>Network Engineer - MyTel Telecommunications</h3>
+                <div class="date">Sep 2021 - Present</div>
+                <ul>
+                    <li>Led the implementation and management of complex network infrastructures serving over 1000+ users</li>
+                    <li>Designed and deployed enterprise-level network solutions using Cisco technologies</li>
+                    <li>Implemented network security measures and protocols to ensure data protection</li>
+                    <li>Managed and optimized network performance using advanced monitoring tools</li>
+                    <li>Provided technical leadership and mentoring to junior team members</li>
+                    <li>Led the transition to cloud-based infrastructure using AWS services</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <h3>Network Operations Engineer - MyTel Telecommunications</h3>
+                <div class="date">Jun 2019 - Aug 2021</div>
+                <ul>
+                    <li>Maintained and troubleshot network infrastructure for critical business operations</li>
+                    <li>Implemented and managed network security protocols and policies</li>
+                    <li>Conducted regular network audits and performance optimizations</li>
+                    <li>Collaborated with cross-functional teams to resolve complex networking issues</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cv-section">
+            <h2>Education</h2>
+            <div class="education-item">
+                <h3>University of Technology (Yatanarpon Cyber City)</h3>
+                <div class="date">2015 - 2019</div>
+                <p>Bachelor of Engineering in Information Technology</p>
+            </div>
+        </div>
+
+        <div class="cv-section">
+            <h2>Professional Certifications</h2>
+            <ul>
+                <li>CKAD: Certified Kubernetes Application Developer (2024)</li>
+                <li>HashiCorp Certified: Terraform Associate (2024)</li>
+                <li>CKA: Certified Kubernetes Administrator (2024)</li>
+                <li>AWS Certified Solutions Architect – Associate (2023)</li>
+                <li>Cisco CCNP Enterprise (2022)</li>
+                <li>Cisco Certified Specialist - Enterprise Advanced Infrastructure Implementation (2022)</li>
+                <li>Cisco Certified Specialist - Enterprise Core (2022)</li>
+                <li>ICSI CNSS Certified Network Security Specialist (2020)</li>
+                <li>Cisco Introduction to Cybersecurity (2020)</li>
+            </ul>
+        </div>
+
+        <div class="cv-section">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Network Infrastructure</h3>
+                    <ul>
+                        <li>Cisco Enterprise Networks</li>
+                        <li>Routing & Switching</li>
+                        <li>Network Security</li>
+                        <li>VPN & Remote Access</li>
+                        <li>Network Automation</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Cloud & DevOps</h3>
+                    <ul>
+                        <li>AWS Services</li>
+                        <li>Kubernetes</li>
+                        <li>Docker</li>
+                        <li>Terraform</li>
+                        <li>CI/CD Pipelines</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Security & Compliance</h3>
+                    <ul>
+                        <li>Network Security</li>
+                        <li>Security Protocols</li>
+                        <li>Access Control</li>
+                        <li>Security Auditing</li>
+                        <li>Compliance Standards</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="theme-toggle" aria-label="Toggle theme">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Move scripts to the end of body and ensure correct loading order -->
+    <script>
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize canvas
+            const canvas = document.getElementById('mouse-canvas');
+            if (!canvas) {
+                console.error('Canvas element not found');
+                return;
+            }
+            
+            // Make sure canvas is visible
+            canvas.style.display = 'block';
+            canvas.style.position = 'fixed';
+            canvas.style.top = '0';
+            canvas.style.left = '0';
+            canvas.style.width = '100%';
+            canvas.style.height = '100%';
+            canvas.style.pointerEvents = 'none';
+            canvas.style.zIndex = '0';
+        });
+
+        function printCV() {
+            const navButtons = document.querySelector('.nav-buttons');
+            const themeToggle = document.querySelector('.theme-toggle');
+            const canvas = document.querySelector('#mouse-canvas');
+            
+            navButtons.style.display = 'none';
+            themeToggle.style.display = 'none';
+            canvas.style.display = 'none';
+            
+            window.print();
+            
+            navButtons.style.display = 'flex';
+            themeToggle.style.display = 'block';
+            canvas.style.display = 'block';
+        }
+    </script>
+    <script src="scripts/script.js"></script>
+</body>
+</html>
