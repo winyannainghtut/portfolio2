@@ -31,15 +31,15 @@ A modern, responsive portfolio website built with HTML5, CSS3, and JavaScript, f
 ```
 /portfolio/
 ├── index.html          # Main HTML document
-├── README.md           # Project documentation
+├── README.md          # Project documentation
 ├── styles/
-│   ├── style.css      # Main stylesheet
-│   └── themes.css     # Theme definitions
+│   ├── style.css     # Main stylesheet
+│   └── themes.css    # Theme definitions
 ├── scripts/
-│   └── script.js      # JavaScript functionality
+│   └── script.js     # JavaScript functionality
 └── jpg/
-    ├── favicon.png    # Site favicon
-    └── x.jpg          # Profile image
+    ├── favicon.png   # Site favicon
+    └── x.jpg         # Profile image
 ```
 
 ## 🚀 Setup and Development

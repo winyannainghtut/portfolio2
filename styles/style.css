@@ -640,3 +640,81 @@ body.scroll-effect {
         overscroll-behavior: auto;
     }
 }
+
+/* Remove CV-related media queries */
+@media print {
+    body {
+        background: white;
+    }
+    
+    .theme-toggle,
+    .nav-button,
+    .cv-download-btn,
+    #mouse-canvas {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .cv-profile {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .cv-contact {
+        justify-content: center;
+    }
+
+    .cv-container {
+        margin: 1rem;
+        padding: 1rem;
+    }
+    
+    .timeline-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .certifications-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Print styles for CV */
+@media print {
+    body {
+        background: white;
+    }
+    
+    .theme-toggle,
+    .nav-button,
+    .cv-download-btn,
+    #mouse-canvas {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .cv-profile {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .cv-contact {
+        justify-content: center;
+    }
+
+    .cv-container {
+        margin: 1rem;
+        padding: 1rem;
+    }
+    
+    .timeline-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .certifications-grid {
+        grid-template-columns: 1fr;
+    }
+}
