@@ -1,76 +1,86 @@
-# Win Yan Naing Htut - Professional Portfolio
+# Portfolio Website - Win Yan Naing Htut
 
-🌐 **Live Website:** [portfolio.winyan.dev](https://portfolio.winyan.dev)
+A modern, responsive portfolio website built with HTML5, CSS3, and JavaScript, featuring a clean design with dark/light theme support.
 
-## Professional Profile
+## 🌐 Live Demo
+[portfolio.winyan.dev](https://portfolio.winyan.dev)
 
-Network Engineer specializing in cloud technologies and network infrastructure. Passionate about implementing robust solutions and optimizing system performance through innovative approaches.
+## 🎯 Key Features
+- Responsive design that works on all devices
+- Dark/Light theme with system preference detection
+- Interactive particle animation background
+- Smooth scrolling and animations
+- Certificate showcase with hover effects
+- Protected content and images
+- Social media integration
+- Blog integration
+- SEO optimized
 
-## Core Expertise
-
-- Network Architecture & Security
-- Cloud Infrastructure Management
-- System Optimization & Automation
-- Technical Troubleshooting & Analysis
-
-## Contact
-
-📧 Email: [winyannainghtut@gmail.com](mailto:winyannainghtut@gmail.com)  
-💼 LinkedIn: [linkedin.com/in/wynh](https://www.linkedin.com/in/wynh)  
-📘 Facebook: [facebook.com/winyannainghtut98](https://www.facebook.com/winyannainghtut98/)
-
-## Website Features
-
-- Modern Glassmorphism Design
-- Responsive Layout
-- Social Media Integration
-- Professional Portfolio Showcase
-- Interactive Contact Section
-
-## Technology Stack
-
-- Modern CSS3 Features
+## 🛠️ Technology Stack
+- HTML5 & CSS3
+- Vanilla JavaScript (ES6+)
 - Font Awesome Icons
-- Responsive Web Design
-- Progressive Enhancement
+- Modern CSS Features:
+  - CSS Variables
+  - Flexbox & Grid
+  - CSS Animations
+  - Backdrop Filter
+  - CSS Custom Properties
+
+## 🏗️ Project Structure
+```
+/portfolio/
+├── index.html          # Main HTML document
+├── README.md           # Project documentation
+├── styles/
+│   ├── style.css      # Main stylesheet
+│   └── themes.css     # Theme definitions
+├── scripts/
+│   └── script.js      # JavaScript functionality
+└── jpg/
+    ├── favicon.png    # Site favicon
+    └── x.jpg          # Profile image
+```
+
+## 🚀 Setup and Development
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/portfolio.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd portfolio
+   ```
+3. Replace placeholder images:
+   - Add your profile photo as `x.jpg` in the `jpg` directory
+   - Update favicon.png with your own favicon
+
+## 📱 Responsive Breakpoints
+- Mobile: < 480px
+- Tablet: 480px - 768px
+- Desktop: > 768px
+
+## 🎨 Theme Features
+- System preference detection
+- Manual theme toggle
+- Persistent theme selection
+- Smooth theme transitions
+
+## 🔒 Security Features
+- Image protection
+- Content copying prevention
+- Right-click disabled
+- DevTools protection
+
+## 📫 Contact Information
+- Email: winyannainghtut98@gmail.com
+- LinkedIn: [Win Yan Naing Htut](https://www.linkedin.com/in/wynh/)
+- Blog: [notes.winyan.dev](https://notes.winyan.dev)
+- Facebook: [Win Yan Naing Htut](https://www.facebook.com/winyannainghtut98/)
+
+## 📄 License
+All rights reserved. © 2024 Win Yan Naing Htut
 
 ---
 
-# Portfolio Website
-
-A modern, responsive portfolio website showcasing my professional experience and certifications.
-
-## Features
-- Dark/Light theme support
-- Responsive design
-- Certificate showcase
-- Social media integration
-- Blog link integration
-
-## Tech Stack
-- HTML5
-- CSS3
-- JavaScript
-- Font Awesome Icons
-
-## Setup
-1. Clone the repository
-2. Place your profile image as `x.jpg` in the `jpg` directory
-3. Update the favicon in the `jpg` directory
-4. Open index.html in a browser
-
-## Structure
-```
-/portfolio
-├── index.html      # Main HTML file
-├── styles/         # CSS files
-├── scripts/        # JavaScript files
-└── jpg/           # Images
-```
-
-## Contact
-- [LinkedIn](https://www.linkedin.com/in/wynh/)
-- [Email](mailto:winyannainghtut98@gmail.com)
-
-**Maintained by:** Win Yan Naing Htut  
-🔄 Last Updated: February 2025
+Last updated: February 2024
