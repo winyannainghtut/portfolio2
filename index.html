@@ -3,16 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Win Yan Naing Htut - Network Engineer & Cloud Specialist Portfolio">
-    <meta name="theme-color" content="#0f172a">
+    <meta name="description" content="Win Yan Naing Htut - Network Engineer & Cloud Specialist Portfolio showcasing skills, certifications, and professional experience">
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#f8f9fa" media="(prefers-color-scheme: light)">
     <meta name="author" content="Win Yan Naing Htut">
-    <meta name="keywords" content="Network Engineer, Cloud Specialist, AWS, Kubernetes, DevOps">
+    <meta name="keywords" content="Network Engineer, Cloud Specialist, AWS, Kubernetes, DevOps, Cloud Network Engineer, Portfolio">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Win Yan Naing Htut - Portfolio">
+    <meta property="og:description" content="Network Engineer & Cloud Specialist Portfolio">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://portfolio.winyan.dev">
+    <meta property="og:image" content="jpg/x.jpg">
     
-    <title>Win Yan Naing Htut - Portfolio</title>
+    <title>Win Yan Naing Htut - Network Engineer & Cloud Specialist</title>
     
     <!-- Critical CSS Preload -->
     <link rel="preload" href="styles/themes.css" as="style">
     <link rel="preload" href="styles/style.css" as="style">
+    <link rel="preload" href="jpg/x.jpg" as="image">
     
     <!-- Performance Optimization -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,59 +39,66 @@
     <script src="scripts/script.js" defer></script>
 </head>
 <body class="theme-dark">
-    <button class="theme-toggle" aria-label="Toggle theme">
-        <i class="fas fa-moon"></i>
+    <a href="#main-content" class="skip-link sr-only">Skip to main content</a>
+    
+    <button class="theme-toggle" aria-label="Toggle theme" title="Switch between dark and light mode">
+        <i class="fas fa-moon" aria-hidden="true"></i>
+        <span class="sr-only">Toggle theme</span>
     </button>
 
-    <div class="page-container minimal-container">
-        <section class="hero minimal-hero">
-            <div>
+    <main id="main-content" class="page-container minimal-container">
+        <header class="hero minimal-hero" role="banner">
+            <div class="hero-content">
                 <div class="profile-wrapper">
-                    <img src="jpg/x.jpg" alt="Win Yan Naing Htut" class="profile-img" loading="lazy">
+                    <img src="jpg/x.jpg" alt="Win Yan Naing Htut profile photo" class="profile-img" loading="lazy" width="180" height="180" fetchpriority="high">
                 </div>
-                <h1><i class="fas fa-user-circle"></i> Win Yan Naing Htut</h1>
-                <div class="role-text">
-                    <span><i class="fas fa-network-wired"></i> Network Engineer</span>
-                    <span><i class="fas fa-cloud"></i> Cloud Specialist</span>
-                    <span><i class="fas fa-cogs"></i> DevOps Engineer</span>
+                <h1><i class="fas fa-user-circle" aria-hidden="true"></i> Win Yan Naing Htut</h1>
+                <div class="role-text" aria-label="Professional roles">
+                    <span><i class="fas fa-network-wired" aria-hidden="true"></i> Network Engineer</span>
+                    <span><i class="fas fa-cloud" aria-hidden="true"></i> Cloud Specialist</span>
+                    <span><i class="fas fa-cogs" aria-hidden="true"></i> DevOps Engineer</span>
                 </div>
-                <div class="social-links">
+                <nav class="social-links" aria-label="Social media links">
                     <a href="https://www.linkedin.com/in/wynh/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
-                        <i class="fab fa-linkedin"></i>
+                        <i class="fab fa-linkedin" aria-hidden="true"></i>
+                        <span class="sr-only">LinkedIn</span>
                     </a>
                     <a href="https://www.facebook.com/winyannainghtut98/" target="_blank" rel="noopener noreferrer" aria-label="Facebook Profile">
-                        <i class="fab fa-facebook"></i>
+                        <i class="fab fa-facebook" aria-hidden="true"></i>
+                        <span class="sr-only">Facebook</span>
                     </a>
-                    <a href="mailto:winyannainghtut98@gmail.com" aria-label="Email">
-                        <i class="fas fa-envelope"></i>
+                    <a href="mailto:winyannainghtut98@gmail.com" aria-label="Email me">
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                        <span class="sr-only">Email</span>
                     </a>
                     <a href="https://github.com/winyannainghtut" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
-                        <i class="fab fa-github"></i>
+                        <i class="fab fa-github" aria-hidden="true"></i>
+                        <span class="sr-only">GitHub</span>
                     </a>
-                </div>
+                </nav>
                 <div class="cv-button">
-                    <a href="cv.html">
-                        <i class="fas fa-file-alt"></i> CV
+                    <a href="cv.html" aria-label="View my CV" class="btn-primary">
+                        <i class="fas fa-file-alt" aria-hidden="true"></i> CV
                     </a>
-                    <button onclick="openSnakeGame()" class="snake-btn">
-                        <i class="fas fa-gamepad"></i> Snake Game
+                    <button onclick="openSnakeGame()" class="snake-btn" aria-label="Play Snake Game">
+                        <i class="fas fa-gamepad" aria-hidden="true"></i> Snake Game
                     </button>
                 </div>
             </div>
-        </section>
+        </header>
 
-        <section id="about" class="about-section">
+        <section id="about" class="about-section" aria-labelledby="about-title">
             <div class="about-container">
                 <div class="about-content">
                     <div class="about-header">
-                        <h2 class="about-title"><i class="fas fa-user-tie"></i> About Me</h2>
+                        <h2 id="about-title" class="about-title"><i class="fas fa-user-tie" aria-hidden="true"></i> About Me</h2>
                         <p class="about-description">
-                            <i class="fas fa-laptop-code"></i> Network Engineer and Cloud Specialist with a proven track record in designing, implementing, 
+                            <i class="fas fa-laptop-code" aria-hidden="true"></i> Network Engineer and Cloud Specialist with a proven track record in designing, implementing, 
                             and managing complex network infrastructures. Experienced in cloud technologies with 
                             AWS certifications and strong expertise in Kubernetes and container orchestration.
                         </p>
                         <p class="about-description">
-                            <i class="fas fa-tools"></i> Skilled in automation and infrastructure as code using Terraform, with hands-on experience 
+                            <i class="fas fa-tools" aria-hidden="true"></i> Skilled in automation and infrastructure as code using Terraform, with hands-on experience 
                             in implementing DevOps practices and CI/CD pipelines. Passionate about emerging technologies 
                             and continuously expanding knowledge in cloud-native solutions.
                         </p>
@@ -92,56 +107,56 @@
             </div>
         </section>
 
-        <section id="about" class="about-section">
-            <h2 class="section-title"><i class="fas fa-star"></i> Skills & Expertise</h2>
+        <section id="skills" class="about-section" aria-labelledby="skills-title">
+            <h2 id="skills-title" class="section-title"><i class="fas fa-star" aria-hidden="true"></i> Skills & Expertise</h2>
             <div class="skills-container">
-                <div class="skills-grid">
+                <div class="skills-grid" role="list">
                     <div class="skill-category">
-                        <h3><i class="fas fa-network-wired"></i> Network & Infrastructure</h3>
+                        <h3><i class="fas fa-network-wired" aria-hidden="true"></i> Network & Infrastructure</h3>
                         <ul>
-                            <li><i class="fas fa-server"></i> Cisco Enterprise Networks</li>
-                            <li><i class="fas fa-shield-alt"></i> Network Security</li>
-                            <li><i class="fas fa-sitemap"></i> Infrastructure Design</li>
-                            <li><i class="fas fa-random"></i> Routing & Switching</li>
+                            <li><i class="fas fa-server" aria-hidden="true"></i> Cisco Enterprise Networks</li>
+                            <li><i class="fas fa-shield-alt" aria-hidden="true"></i> Network Security</li>
+                            <li><i class="fas fa-sitemap" aria-hidden="true"></i> Infrastructure Design</li>
+                            <li><i class="fas fa-random" aria-hidden="true"></i> Routing & Switching</li>
                         </ul>
                     </div>
                     
                     <div class="skill-category">
-                        <h3><i class="fas fa-cloud"></i> Cloud & DevOps</h3>
+                        <h3><i class="fas fa-cloud" aria-hidden="true"></i> Cloud & DevOps</h3>
                         <ul>
-                            <li><i class="fab fa-aws"></i> AWS Services</li>
-                            <li><i class="fab fa-docker"></i> Docker/Kubernetes</li>
-                            <li><i class="fas fa-code-branch"></i> Terraform</li>
-                            <li><i class="fas fa-terminal"></i> Shell Scripting</li>
+                            <li><i class="fab fa-aws" aria-hidden="true"></i> AWS Services</li>
+                            <li><i class="fab fa-docker" aria-hidden="true"></i> Docker/Kubernetes</li>
+                            <li><i class="fas fa-code-branch" aria-hidden="true"></i> Terraform</li>
+                            <li><i class="fas fa-terminal" aria-hidden="true"></i> Shell Scripting</li>
                         </ul>
                     </div>
                     
                     <div class="skill-category">
-                        <h3><i class="fas fa-shield-alt"></i> Security & Compliance</h3>
+                        <h3><i class="fas fa-shield-alt" aria-hidden="true"></i> Security & Compliance</h3>
                         <ul>
-                            <li><i class="fas fa-lock"></i> Network Security</li>
-                            <li><i class="fas fa-key"></i> Security Protocols</li>
-                            <li><i class="fas fa-clipboard-check"></i> Compliance Standards</li>
-                            <li><i class="fas fa-exclamation-triangle"></i> Risk Management</li>
+                            <li><i class="fas fa-lock" aria-hidden="true"></i> Network Security</li>
+                            <li><i class="fas fa-key" aria-hidden="true"></i> Security Protocols</li>
+                            <li><i class="fas fa-clipboard-check" aria-hidden="true"></i> Compliance Standards</li>
+                            <li><i class="fas fa-exclamation-triangle" aria-hidden="true"></i> Risk Management</li>
                         </ul>
                     </div>
                     
                     <div class="skill-category">
-                        <h3><i class="fas fa-project-diagram"></i> Other Skills</h3>
+                        <h3><i class="fas fa-project-diagram" aria-hidden="true"></i> Other Skills</h3>
                         <ul>
-                            <li><i class="fas fa-tasks"></i> IT Project Management</li>
-                            <li><i class="fas fa-users"></i> Team Leadership</li>
-                            <li><i class="fas fa-lightbulb"></i> Problem Solving</li>
-                            <li><i class="fas fa-comments"></i> Communication</li>
+                            <li><i class="fas fa-tasks" aria-hidden="true"></i> IT Project Management</li>
+                            <li><i class="fas fa-users" aria-hidden="true"></i> Team Leadership</li>
+                            <li><i class="fas fa-lightbulb" aria-hidden="true"></i> Problem Solving</li>
+                            <li><i class="fas fa-comments" aria-hidden="true"></i> Communication</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="certifications-section" id="certifications">
-            <h2 class="section-title"><i class="fas fa-award"></i> Professional Certifications</h2>
-            <div class="certifications-container">
+        <section class="certifications-section" id="certifications" aria-labelledby="certifications-title">
+            <h2 id="certifications-title" class="section-title"><i class="fas fa-award" aria-hidden="true"></i> Professional Certifications</h2>
+            <div class="certifications-container" role="list">
                 <div class="cert-card">
                     <div class="cert-card-inner">
                         <div class="cert-card-front">
@@ -321,13 +336,13 @@
     </button>
 
     <!-- Snake Game Modal -->
-    <div id="snakeModal" class="modal">
+    <div id="snakeModal" class="modal" aria-labelledby="snake-game-title" aria-hidden="true" role="dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>Snake Game <span class="close">&times;</span></h2>
+                <h2 id="snake-game-title">Snake Game <span class="close" aria-label="Close game" tabindex="0" role="button">&times;</span></h2>
                 <p class="game-instructions">Use arrow keys to move, P to pause</p>
             </div>
-            <canvas id="snakeCanvas"></canvas>
+            <canvas id="snakeCanvas" aria-label="Snake game canvas"></canvas>
         </div>
     </div>
 

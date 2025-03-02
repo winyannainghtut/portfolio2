@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/cv.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
         .cv-header .name {
             font-size: 2.5em;
@@ -35,9 +34,6 @@
         <a href="index.html" class="nav-button">
             <i class="fas fa-arrow-left"></i> Back
         </a>
-        <button onclick="downloadCV()" class="nav-button">
-            <i class="fas fa-download"></i> Download CV
-        </button>
     </div>
 
     <div class="cv-container">
@@ -59,7 +55,7 @@
             <section class="cv-section">
                 <h2><i class="fas fa-briefcase"></i> Professional Experience</h2>
                 <div class="experience-item">
-                    <h3><i class="fas fa-network-wired"></i> Network Engineer - Aven-Sys, Singapore</h3>
+                    <h3><i class="fas fa-network-wired"></i> Cloud Network Engineer - NCS, Singapore</h3>
                     <div class="date"><i class="far fa-calendar-alt"></i> Jan 2024 - Present (1 year 1 month)</div>
                     <ul>
                         <li>Support and maintain Fortigate, FortiAnalyzer and Forti-Manager as part of agency Network Firewall</li>
@@ -167,61 +163,7 @@
             canvas.style.zIndex = '0';
         }
 
-        async function downloadCV() {
-            // Hide elements we don't want in the PDF
-            const elementsToHide = document.querySelectorAll('.nav-buttons, .theme-toggle, #mouse-canvas, .scroll-top');
-            elementsToHide.forEach(el => el.style.display = 'none');
-            
-            // Force light theme for PDF
-            document.body.classList.remove('theme-dark');
-            document.body.classList.add('theme-light');
-            
-            // Get the CV container
-            const element = document.querySelector('.cv-container');
-            
-            // Configure PDF options
-            const opt = {
-                margin: [10, 10],
-                filename: 'WinYanNaingHtut_CV.pdf',
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { 
-                    scale: 2,
-                    useCORS: true,
-                    letterRendering: true
-                },
-                jsPDF: { 
-                    unit: 'mm', 
-                    format: 'a4', 
-                    orientation: 'portrait' 
-                }
-            };
-            
-            try {
-                // Generate PDF
-                await html2pdf().set(opt).from(element).save();
-                
-                // Restore elements and theme after PDF generation
-                elementsToHide.forEach(el => el.style.display = 'block');
-                document.querySelector('#mouse-canvas').style.display = 'block';
-                document.querySelector('.nav-buttons').style.display = 'flex';
-                document.querySelector('.scroll-top').style.display = 'block';
-                
-                // Restore original theme
-                document.body.classList.remove('theme-light');
-                document.body.classList.add('theme-dark');
-            } catch (error) {
-                console.error('Error generating PDF:', error);
-                alert('There was an error generating the PDF. Please try again.');
-                
-                // Restore elements and theme in case of error
-                elementsToHide.forEach(el => el.style.display = 'block');
-                document.querySelector('#mouse-canvas').style.display = 'block';
-                document.querySelector('.nav-buttons').style.display = 'flex';
-                document.querySelector('.scroll-top').style.display = 'block';
-                document.body.classList.remove('theme-light');
-                document.body.classList.add('theme-dark');
-            }
-        }
+
     </script>
     <script src="scripts/script.js" defer></script>
 </body>

@@ -15,6 +15,12 @@ class SnakeGame {
         this.canvas.width = 400;
         this.canvas.height = 400;
         
+        // Create a hidden element for screen reader announcements
+        this.srAnnouncer = document.createElement('div');
+        this.srAnnouncer.setAttribute('aria-live', 'polite');
+        this.srAnnouncer.classList.add('sr-only');
+        document.body.appendChild(this.srAnnouncer);
+        
         // Get computed styles
         const computedStyle = getComputedStyle(document.documentElement);
         this.colors = {
@@ -84,18 +90,26 @@ class SnakeGame {
 
         const key = event.key;
         
-        if (key === 'p' || key === 'P') {
+        // Handle pause/resume with both 'p' key and spacebar for accessibility
+        if (key === 'p' || key === 'P' || key === ' ') {
             this.togglePause();
+            // Announce pause state for screen readers
+            this.announceGameState(this.isPaused ? 'Game paused' : 'Game resumed');
             return;
         }
 
         if (this.isPaused) return;
 
+        // Handle both arrow keys and WASD keys for more control options
         switch(key) {
             case 'ArrowUp':
+            case 'w':
+            case 'W':
                 if (this.direction !== 'down') this.direction = 'up';
                 break;
             case 'ArrowDown':
+            case 's':
+            case 'S':
                 if (this.direction !== 'up') this.direction = 'down';
                 break;
             case 'ArrowLeft':
@@ -230,6 +244,12 @@ class SnakeGame {
         this.ctx.fillText(`Score: ${this.score}`, 10, 30);
     }
 
+    announceGameState(message) {
+        if (this.srAnnouncer) {
+            this.srAnnouncer.textContent = message;
+        }
+    }
+    
     gameOver() {
         clearInterval(this.gameLoop);
         this.ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
@@ -241,6 +261,9 @@ class SnakeGame {
         this.ctx.font = '20px Arial';
         this.ctx.fillText(`Score: ${this.score}`, this.canvas.width / 2, this.canvas.height / 2 + 20);
         this.ctx.fillText('Press Space to restart', this.canvas.width / 2, this.canvas.height / 2 + 60);
+        
+        // Announce game over for screen readers
+        this.announceGameState(`Game Over! Your score is ${this.score}. Press Space to restart.`);
 
         // Add space key listener for restart
         const restartHandler = (e) => {

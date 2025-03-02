@@ -16,31 +16,56 @@
     // Theme Toggle Optimization
     function initThemeToggle() {
         const themeToggle = document.querySelector('.theme-toggle');
-        const moonIcon = themeToggle.querySelector('.fa-moon');
-        const sunIcon = document.createElement('i');
-        sunIcon.className = 'fas fa-sun';
-
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('theme-dark');
-            document.body.classList.toggle('theme-light');
-            
-            if (document.body.classList.contains('theme-dark')) {
-                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        // Function to update theme toggle button appearance
+        function updateThemeToggle(isDark) {
+            if (isDark) {
+                themeToggle.innerHTML = '<i class="fas fa-moon" aria-hidden="true"></i><span class="sr-only">Switch to light mode</span>';
             } else {
-                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                themeToggle.innerHTML = '<i class="fas fa-sun" aria-hidden="true"></i><span class="sr-only">Switch to dark mode</span>';
             }
-            
-            // Optional: Save theme preference in localStorage
-            localStorage.setItem('theme', document.body.classList.contains('theme-dark') ? 'dark' : 'light');
-        });
-
-        // Restore theme preference on page load
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'light') {
-            document.body.classList.remove('theme-dark');
-            document.body.classList.add('theme-light');
-            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
         }
+        
+        // Function to set theme
+        function setTheme(theme) {
+            const isDark = theme === 'dark';
+            document.body.classList.toggle('theme-dark', isDark);
+            document.body.classList.toggle('theme-light', !isDark);
+            updateThemeToggle(isDark);
+            localStorage.setItem('theme', theme);
+        }
+        
+        // Handle click event
+        themeToggle.addEventListener('click', () => {
+            const newTheme = document.body.classList.contains('theme-dark') ? 'light' : 'dark';
+            setTheme(newTheme);
+        });
+        
+        // Handle keyboard event for accessibility
+        themeToggle.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                themeToggle.click();
+            }
+        });
+        
+        // Set initial theme based on preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            // Use saved preference if available
+            setTheme(savedTheme);
+        } else {
+            // Otherwise use system preference
+            setTheme(prefersDarkScheme.matches ? 'dark' : 'light');
+        }
+        
+        // Listen for system preference changes
+        prefersDarkScheme.addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                setTheme(e.matches ? 'dark' : 'light');
+            }
+        });
     }
 
     // Scroll Top Button Optimization
