@@ -8,150 +8,111 @@
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/cv.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        .cv-header .name {
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-        .cv-header .role-text {
-            font-size: clamp(1.2rem, 4vw, 1.8rem);
-            margin: 0.8rem 0;
-        }
-        .cv-header .social-links {
-            font-size: 1rem;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-        .experience-item i,
-        .education-item i,
-        .certifications-list i {
-            margin-right: 0.5rem;
-        }
-        @media (max-width: 768px) {
-            .cv-container {
-                margin: 1rem;
-                padding: 1.5rem;
-            }
-            .cv-header .social-links {
-                flex-direction: column;
-                align-items: center;
-            }
-            .cv-header .social-links a {
-                width: 100%;
-                text-align: center;
-                padding: 0.5rem;
-            }
-            .experience-item, .education-item {
-                padding: 1rem;
-                margin-bottom: 1rem;
-            }
-            .experience-item h3, .education-item h3 {
-                font-size: 1.1rem;
-            }
-            .date {
-                font-size: 0.9rem;
-            }
-            ul li {
-                font-size: 1rem;
-                margin-bottom: 0.5rem;
-            }
-        }
-    </style>
 </head>
 <body class="theme-dark">
     <canvas id="mouse-canvas"></canvas>
     <div class="nav-buttons">
         <a href="index.html" class="nav-button">
-            <i class="fas fa-arrow-left"></i> Back
+            <i class="fas fa-arrow-left"></i> Back to Portfolio
         </a>
     </div>
 
     <div class="cv-container">
-        <header class="cv-header">
-            <h1 class="name">Win Yan Naing Htut</h1>
-            <p class="role-text">Cloud Network Engineer</p>
-            <div class="social-links">
-                <a href="mailto:winyannainghtut98@gmail.com"><i class="fas fa-envelope"></i> winyannainghtut98@gmail.com</a> |
-                <a href="https://www.linkedin.com/in/wynh/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-            </div>
-        </header>
+        <!-- Sidebar with personal info -->
+        <div class="cv-sidebar">
+            <header class="cv-header">
+                <h1 class="name">Win Yan Naing Htut</h1>
+                <p class="role-text">Cloud Network Engineer</p>
+                <div class="social-links">
+                    <a href="mailto:winyannainghtut98@gmail.com">
+                        <i class="fas fa-envelope"></i> Email
+                    </a>
+                    <a href="https://www.linkedin.com/in/wynh/" target="_blank">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                    <a href="#" target="_blank">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                </div>
+            </header>
+        </div>
 
-        <main>
+        <!-- Main content area -->
+        <div class="cv-main">
             <section class="cv-section">
-                <h2><i class="fas fa-user-tie"></i> Summary</h2>
+                <h2><i class="fas fa-user-tie"></i> Professional Summary</h2>
                 <p>A cloud-network engineer with 7 years of experience and enthusiasm for all technologies correlated to networking and cloud-based technologies. Strong interpersonal and analytical skills alongside leadership skills developed through professional experience. Looking for a challenging role to contribute to company growth while enhancing knowledge through new experiences.</p>
             </section>
 
             <section class="cv-section">
                 <h2><i class="fas fa-briefcase"></i> Professional Experience</h2>
-                <div class="experience-item">
-                    <h3><i class="fas fa-network-wired"></i> Cloud Network Engineer - NCS, Singapore</h3>
-                    <div class="date"><i class="far fa-calendar-alt"></i> Jan 2024 - Present (1 year 1 month)</div>
-                    <ul>
-                        <li>Support and maintain Fortigate, FortiAnalyzer and Forti-Manager as part of agency Network Firewall</li>
-                        <li>Firewall Administration and coordination for network related activities</li>
-                        <li>Support and maintain AWS network infrastructure (NACL, Security Group, WAF, Load Balancer, Route tables)</li>
-                        <li>Support red-hat servers migration activities and Disaster Recovery exercises</li>
-                        <li>Support Audit and security compliance activities</li>
-                    </ul>
-                </div>
-                <div class="experience-item">
-                    <h3><i class="fas fa-server"></i> Network Engineer - Gain City Electronic PTE, Singapore</h3>
-                    <div class="date"><i class="far fa-calendar-alt"></i> Feb 2023 - Dec 2023 (11 months)</div>
-                    <ul>
-                        <li>Configure/Manage/Monitor CCTVs, L2-L3 switches, Routers, ONTs, Firewall and IP/Digital Phones</li>
-                        <li>Enforce security policies including firewall, VPN, AD, NTFS structure</li>
-                        <li>Maintain AWS networking services (VPC, Direct Connect, ELB, Auto Scaling)</li>
-                        <li>Deploy and manage network monitoring tools (Cacti, Zabbix) and NDR (DarkTrace)</li>
-                        <li>Build network asset control systems using Netbox (IPAM and DCIM)</li>
-                        <li>Deploy SD-WAN solution with Fortinet devices using Forti-Secure-SDWAN</li>
-                    </ul>
-                </div>
-                <div class="experience-item">
-                    <h3><i class="fas fa-network-wired"></i> Network Engineer - Frontiir Co., Ltd, Myanmar</h3>
-                    <div class="date"><i class="far fa-calendar-alt"></i> April 2021 - Jan 2023 (1 year 10 months)</div>
-                    <ul>
-                        <li>IP planning for distribution and access layer networks</li>
-                        <li>Configure routing protocols (OSPF, ISIS, Static route, MPLS, BGP) on multi-vendor platforms</li>
-                        <li>Implement TACACS+ and AAA for network devices</li>
-                        <li>Create and maintain network documentation (HLD/LLD, MOPs/SOPs)</li>
-                        <li>Monitor network performance using Nagios, Cacti, Smoke-Ping</li>
-                        <li>Lead network migration projects and coordinate with cross-functional teams</li>
-                    </ul>
-                </div>
-                <div class="experience-item">
-                    <h3><i class="fas fa-network-wired"></i> Internet Core Engineer - Mytel Myanmar</h3>
-                    <div class="date"><i class="far fa-calendar-alt"></i> July 2020 - Feb 2021 (8 months)</div>
-                    <ul>
-                        <li>Manage fixed broadband network infrastructure</li>
-                        <li>Work with Juniper MX960, Huawei SRT, ZTE/Huawei OLT systems</li>
-                        <li>Create and maintain network documentation and procedures</li>
-                        <li>Monitor network using U2000, Net numen tools</li>
-                    </ul>
-                </div>
-                <div class="experience-item">
-                    <h3><i class="fas fa-network-wired"></i> Associate Network Engineer - Frontiir Co., Ltd</h3>
-                    <div class="date"><i class="far fa-calendar-alt"></i> May 2018 - June 2020 (2 years 2 months)</div>
-                    <ul>
-                        <li>Design and implement distribution and access layer networks</li>
-                        <li>Configure OSPF, ISIS protocols on Linux based routing devices</li>
-                        <li>Perform network monitoring and congestion management</li>
-                        <li>Coordinate with multiple teams for network activities and upgrades</li>
-                    </ul>
-                </div>
-                <div class="experience-item">
-                    <h3><i class="fas fa-network-wired"></i> Assistant Network Engineer - Frontiir Co., Ltd</h3>
-                    <div class="date"><i class="far fa-calendar-alt"></i> March 2017 - June 2018 (1 year 4 months)</div>
-                    <ul>
-                        <li>Configure and install switches, routers, and wireless devices (Ubiquiti, Ruckus and Cambium)</li>
-                        <li>Point-to-Point wireless network setup installation</li>
-                        <li>Cross performs with the Implementation team and provisions devices</li>
-                        <li>Experience with public Wi-Fi solutions</li>
-                        <li>Documentation (Network Diagram, Device's list, etc.)</li>
-                    </ul>
+                <div class="experience-timeline">
+                    <div class="experience-item">
+                        <h3><i class="fas fa-network-wired"></i> Cloud Network Engineer - NCS, Singapore</h3>
+                        <div class="date"><i class="far fa-calendar-alt"></i> Jan 2024 - Present (1 year 1 month)</div>
+                        <ul>
+                            <li>Support and maintain Fortigate, FortiAnalyzer and Forti-Manager as part of agency Network Firewall</li>
+                            <li>Firewall Administration and coordination for network related activities</li>
+                            <li>Support and maintain AWS network infrastructure (NACL, Security Group, WAF, Load Balancer, Route tables)</li>
+                            <li>Support red-hat servers migration activities and Disaster Recovery exercises</li>
+                            <li>Support Audit and security compliance activities</li>
+                        </ul>
+                    </div>
+                    <div class="experience-item">
+                        <h3><i class="fas fa-server"></i> Network Engineer - Gain City Electronic PTE, Singapore</h3>
+                        <div class="date"><i class="far fa-calendar-alt"></i> Feb 2023 - Dec 2023 (11 months)</div>
+                        <ul>
+                            <li>Configure/Manage/Monitor CCTVs, L2-L3 switches, Routers, ONTs, Firewall and IP/Digital Phones</li>
+                            <li>Enforce security policies including firewall, VPN, AD, NTFS structure</li>
+                            <li>Maintain AWS networking services (VPC, Direct Connect, ELB, Auto Scaling)</li>
+                            <li>Deploy and manage network monitoring tools (Cacti, Zabbix) and NDR (DarkTrace)</li>
+                            <li>Build network asset control systems using Netbox (IPAM and DCIM)</li>
+                            <li>Deploy SD-WAN solution with Fortinet devices using Forti-Secure-SDWAN</li>
+                        </ul>
+                    </div>
+                    <div class="experience-item">
+                        <h3><i class="fas fa-network-wired"></i> Network Engineer - Frontiir Co., Ltd, Myanmar</h3>
+                        <div class="date"><i class="far fa-calendar-alt"></i> April 2021 - Jan 2023 (1 year 10 months)</div>
+                        <ul>
+                            <li>IP planning for distribution and access layer networks</li>
+                            <li>Configure routing protocols (OSPF, ISIS, Static route, MPLS, BGP) on multi-vendor platforms</li>
+                            <li>Implement TACACS+ and AAA for network devices</li>
+                            <li>Create and maintain network documentation (HLD/LLD, MOPs/SOPs)</li>
+                            <li>Monitor network performance using Nagios, Cacti, Smoke-Ping</li>
+                            <li>Lead network migration projects and coordinate with cross-functional teams</li>
+                        </ul>
+                    </div>
+                    <div class="experience-item">
+                        <h3><i class="fas fa-network-wired"></i> Internet Core Engineer - Mytel Myanmar</h3>
+                        <div class="date"><i class="far fa-calendar-alt"></i> July 2020 - Feb 2021 (8 months)</div>
+                        <ul>
+                            <li>Manage fixed broadband network infrastructure</li>
+                            <li>Work with Juniper MX960, Huawei SRT, ZTE/Huawei OLT systems</li>
+                            <li>Create and maintain network documentation and procedures</li>
+                            <li>Monitor network using U2000, Net numen tools</li>
+                        </ul>
+                    </div>
+                    <div class="experience-item">
+                        <h3><i class="fas fa-network-wired"></i> Associate Network Engineer - Frontiir Co., Ltd</h3>
+                        <div class="date"><i class="far fa-calendar-alt"></i> May 2018 - June 2020 (2 years 2 months)</div>
+                        <ul>
+                            <li>Design and implement distribution and access layer networks</li>
+                            <li>Configure OSPF, ISIS protocols on Linux based routing devices</li>
+                            <li>Perform network monitoring and congestion management</li>
+                            <li>Coordinate with multiple teams for network activities and upgrades</li>
+                        </ul>
+                    </div>
+                    <div class="experience-item">
+                        <h3><i class="fas fa-network-wired"></i> Assistant Network Engineer - Frontiir Co., Ltd</h3>
+                        <div class="date"><i class="far fa-calendar-alt"></i> March 2017 - June 2018 (1 year 4 months)</div>
+                        <ul>
+                            <li>Configure and install switches, routers, and wireless devices (Ubiquiti, Ruckus and Cambium)</li>
+                            <li>Point-to-Point wireless network setup installation</li>
+                            <li>Cross performs with the Implementation team and provisions devices</li>
+                            <li>Experience with public Wi-Fi solutions</li>
+                            <li>Documentation (Network Diagram, Device's list, etc.)</li>
+                        </ul>
+                    </div>
                 </div>
             </section>
 
@@ -163,7 +124,39 @@
                     <p><i class="fas fa-book"></i> Bachelor of Art in English (Distance Education)</p>
                 </div>
             </section>
-        </main>
+
+            <section class="cv-section">
+                <h2><i class="fas fa-certificate"></i> Certifications</h2>
+                <div class="education-item">
+                    <h3><i class="fas fa-award"></i> CKAD: Certified Kubernetes Application Developer</h3>
+                    <div class="date"><i class="far fa-calendar-alt"></i> Dec 2024 – Dec 2026</div>
+                </div>
+                <div class="education-item">
+                    <h3><i class="fas fa-award"></i> HashiCorp Certified: Terraform Associate</h3>
+                    <div class="date"><i class="far fa-calendar-alt"></i> Oct 2024 – Oct 2026</div>
+                </div>
+                <div class="education-item">
+                    <h3><i class="fas fa-award"></i> CKA: Certified Kubernetes Administrator</h3>
+                    <div class="date"><i class="far fa-calendar-alt"></i> Aug 2024 – Aug 2026</div>
+                </div>
+                <div class="education-item">
+                    <h3><i class="fas fa-award"></i> AWS Certified Solutions Architect – Associate</h3>
+                    <div class="date"><i class="far fa-calendar-alt"></i> Oct 2023 – Oct 2026</div>
+                </div>
+                <div class="education-item">
+                    <h3><i class="fas fa-award"></i> Cisco CCNP Enterprise</h3>
+                    <div class="date"><i class="far fa-calendar-alt"></i> Dec 2022 – Dec 2025</div>
+                </div>
+                <div class="education-item">
+                    <h3><i class="fas fa-award"></i> Cisco Certified Specialist - Enterprise Advanced Infrastructure Implementation</h3>
+                    <div class="date"><i class="far fa-calendar-alt"></i> Dec 2022 – Dec 2025</div>
+                </div>
+                <div class="education-item">
+                    <h3><i class="fas fa-award"></i> Cisco Certified Specialist - Enterprise Core</h3>
+                    <div class="date"><i class="far fa-calendar-alt"></i> Jun 2022 – Jun 2025</div>
+                </div>
+            </section>
+        </div>
     </div>
 
     <button id="scroll-top" class="scroll-top" aria-label="Scroll to top">
@@ -176,7 +169,26 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize canvas
             initializeCanvas();
+            
+            // Scroll to top button functionality
+            const scrollTopBtn = document.getElementById('scroll-top');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    scrollTopBtn.classList.add('visible');
+                } else {
+                    scrollTopBtn.classList.remove('visible');
+                }
+            });
+            
+            scrollTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
         });
 
         function initializeCanvas() {
@@ -195,8 +207,6 @@
             canvas.style.pointerEvents = 'none';
             canvas.style.zIndex = '0';
         }
-
-
     </script>
     <script src="scripts/script.js" defer></script>
 </body>
