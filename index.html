@@ -76,14 +76,7 @@
                         <span class="sr-only">GitHub</span>
                     </a>
                 </nav>
-                <div class="cv-button">
-                    <a href="cv.html" aria-label="View my CV" class="btn-primary">
-                        <i class="fas fa-file-alt" aria-hidden="true"></i> CV
-                    </a>
-                    <button onclick="openSnakeGame()" class="snake-btn" aria-label="Play Snake Game">
-                        <i class="fas fa-gamepad" aria-hidden="true"></i> Snake Game
-                    </button>
-                </div>
+                <!-- CV and Snake Game buttons removed -->
             </div>
         </header>
 
@@ -335,53 +328,6 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <!-- Snake Game Modal -->
-    <div id="snakeModal" class="modal" aria-labelledby="snake-game-title" aria-hidden="true" role="dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 id="snake-game-title">Snake Game <span class="close" aria-label="Close game" tabindex="0" role="button">&times;</span></h2>
-                <p class="game-instructions">Use arrow keys to move, P to pause</p>
-            </div>
-            <canvas id="snakeCanvas" aria-label="Snake game canvas"></canvas>
-        </div>
-    </div>
-
-    <script src="scripts/snake.js" defer></script>
-    <script>
-        let snakeGame = null;
-        
-        function openSnakeGame() {
-            const modal = document.getElementById('snakeModal');
-            const canvas = document.getElementById('snakeCanvas');
-            modal.style.display = 'block';
-            
-            if (!snakeGame) {
-                snakeGame = new SnakeGame(canvas);
-                snakeGame.start();
-            }
-        }
-
-        // Close modal when clicking the X
-        document.querySelector('.close').onclick = function() {
-            const modal = document.getElementById('snakeModal');
-            modal.style.display = 'none';
-            if (snakeGame) {
-                snakeGame.isPaused = true;
-                clearInterval(snakeGame.gameLoop);
-            }
-        }
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            const modal = document.getElementById('snakeModal');
-            if (event.target == modal) {
-                modal.style.display = 'none';
-                if (snakeGame) {
-                    snakeGame.isPaused = true;
-                    clearInterval(snakeGame.gameLoop);
-                }
-            }
-        }
-    </script>
+    <!-- Snake Game Modal and related scripts removed -->
 </body>
 </html>

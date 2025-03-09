@@ -1,7 +1,7 @@
 // Performance and Optimization Improvements
 (function() {
     // Debounce function for performance-critical events
-    function debounce(func, wait = 100) {
+    function debounce(func, wait = 200) {
         let timeout;
         return function executedFunction(...args) {
             const later = () => {
@@ -16,6 +16,8 @@
     // Theme Toggle Optimization
     function initThemeToggle() {
         const themeToggle = document.querySelector('.theme-toggle');
+        if (!themeToggle) return;
+        
         const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
         
         // Function to update theme toggle button appearance
@@ -42,14 +44,6 @@
             setTheme(newTheme);
         });
         
-        // Handle keyboard event for accessibility
-        themeToggle.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                themeToggle.click();
-            }
-        });
-        
         // Set initial theme based on preference
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme) {
@@ -59,13 +53,6 @@
             // Otherwise use system preference
             setTheme(prefersDarkScheme.matches ? 'dark' : 'light');
         }
-        
-        // Listen for system preference changes
-        prefersDarkScheme.addEventListener('change', (e) => {
-            if (!localStorage.getItem('theme')) {
-                setTheme(e.matches ? 'dark' : 'light');
-            }
-        });
     }
 
     // Scroll Top Button Optimization
@@ -74,8 +61,8 @@
         if (!scrollTopBtn) return;
 
         const showScrollTopButton = debounce(() => {
-            scrollTopBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
-        });
+            scrollTopBtn.style.display = window.scrollY > 300 ? 'flex' : 'none';
+        }, 200);
 
         window.addEventListener('scroll', showScrollTopButton);
         
@@ -87,14 +74,39 @@
         });
     }
 
+    // Removing initScrollTopButton and initSmoothScrolling functions as they are no longer needed
+    function initSmoothScrolling() {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (!targetElement) return;
+                
+                const container = document.querySelector('.page-container');
+                const targetPosition = targetElement.offsetTop;
+                const offsetAdjustment = 20; // Small offset to improve visibility
+                
+                container.scrollTo({
+                    top: targetPosition - offsetAdjustment,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    }
+
     // Initialize all features when DOM is fully loaded
     function init() {
         initThemeToggle();
         initScrollTopButton();
+        initSmoothScrolling();
 
-        // Add fade-in animation to elements
+        // Add fade-in animation to elements with reduced frequency
         const observerOptions = {
-            threshold: 0.1,
+            threshold: 0.2,
             rootMargin: '0px 0px -50px 0px'
         };
 
@@ -107,41 +119,11 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.certification-card, .skill-category, .about-description').forEach(el => {
+        // Only observe important elements
+        document.querySelectorAll('.certification-card, .skill-category').forEach(el => {
             el.style.opacity = '0';
             observer.observe(el);
         });
-
-        // Disable right-click and context menu
-        document.addEventListener('contextmenu', (e) => {
-            e.preventDefault();
-            return false;
-        });
-
-        // Disable keyboard shortcuts that could be used to copy content
-        document.addEventListener('keydown', (e) => {
-            // Disable Ctrl+C, Ctrl+U, Ctrl+S, F12
-            if (
-                (e.ctrlKey && (e.key === 'c' || e.key === 'C' || 
-                              e.key === 'u' || e.key === 'U' ||
-                              e.key === 's' || e.key === 'S')) ||
-                e.key === 'F12'
-            ) {
-                e.preventDefault();
-                return false;
-            }
-        });
-
-        // Disable drag and drop of images
-        document.addEventListener('dragstart', (e) => {
-            e.preventDefault();
-            return false;
-        });
-
-        // Print CV function
-        function printCV() {
-            window.print();
-        }
     }
 
     // Use DOMContentLoaded for more efficient initialization

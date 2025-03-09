@@ -64,15 +64,15 @@
     color-scheme: dark light;
 }
 
-/* Remove complex transitions */
+/* Simplified transitions */
 *, *::before, *::after {
     transition: background-color 0.3s ease,
                 color 0.3s ease;
 }
 
-/* Scrollbar Styles */
+/* Scrollbar Styles - simplified */
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -81,11 +81,7 @@
 
 ::-webkit-scrollbar-thumb {
     background: var(--scrollbar-thumb);
-    border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--muted-text);
+    border-radius: 4px;
 }
 
 /* Global Styles */
