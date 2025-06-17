@@ -55,54 +55,11 @@
         }
     }
 
-    // Scroll Top Button Optimization
-    function initScrollTopButton() {
-        const scrollTopBtn = document.getElementById('scroll-top');
-        if (!scrollTopBtn) return;
 
-        const showScrollTopButton = debounce(() => {
-            scrollTopBtn.style.display = window.scrollY > 300 ? 'flex' : 'none';
-        }, 200);
-
-        window.addEventListener('scroll', showScrollTopButton);
-        
-        scrollTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    }
-
-    // Removing initScrollTopButton and initSmoothScrolling functions as they are no longer needed
-    function initSmoothScrolling() {
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (!targetElement) return;
-                
-                const container = document.querySelector('.page-container');
-                const targetPosition = targetElement.offsetTop;
-                const offsetAdjustment = 20; // Small offset to improve visibility
-                
-                container.scrollTo({
-                    top: targetPosition - offsetAdjustment,
-                    behavior: 'smooth'
-                });
-            });
-        });
-    }
 
     // Initialize all features when DOM is fully loaded
     function init() {
         initThemeToggle();
-        initScrollTopButton();
-        initSmoothScrolling();
 
         // Add fade-in animation to elements with reduced frequency
         const observerOptions = {
@@ -120,7 +77,7 @@
         }, observerOptions);
 
         // Only observe important elements
-        document.querySelectorAll('.certification-card, .skill-category').forEach(el => {
+        document.querySelectorAll('.cert-card, .skill-category').forEach(el => {
             el.style.opacity = '0';
             observer.observe(el);
         });
